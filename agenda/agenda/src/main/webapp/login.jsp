@@ -24,9 +24,9 @@
         <form method="post" action="index.jsp">
             <table>
                 <tr>
-                    <th><fmt:message key="user.login" />:</th>
-                    <td><input type="text" name="login"
-                               value="${param.login}"/></td>
+                    <th><fmt:message key="user.email" />:</th>
+                    <td><input type="text" name="email"
+                               value="${param.email}"/></td>
                 </tr>
                 <tr>
                     <th><fmt:message key="user.password" />:</th>

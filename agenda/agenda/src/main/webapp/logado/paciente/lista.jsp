@@ -43,7 +43,7 @@
 			<table border="1">
 				<tr>
 					<th><fmt:message key="user.ID" /></th>
-					<th><fmt:message key="user.login" /></th>
+					<th><fmt:message key="user.email" /></th>
 					<th><fmt:message key="user.password" /></th>
 					<th><fmt:message key="user.name" /></th>
 					<th><fmt:message key="user.role" /></th>
@@ -52,7 +52,7 @@
 				<c:forEach var="paciente" items="${requestScope.listaPacientes}">
 					<tr>
 						<td><c:out value="${paciente.id}" /></td>
-						<td><c:out value="${paciente.login}" /></td>
+						<td><c:out value="${paciente.email}" /></td>
 						<td><c:out value="${paciente.senha}" /></td>
 						<td><c:out value="${paciente.nome}" /></td>
 						<td><c:out value="${paciente.papel}" /></td>

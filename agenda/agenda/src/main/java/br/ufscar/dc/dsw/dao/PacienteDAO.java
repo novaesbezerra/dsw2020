@@ -147,7 +147,7 @@ public class PacienteDAO extends GenericDAO {
     public Paciente getbyEmail(String email) {
         Paciente paciente = null;
 
-        String sql = "SELECT * from Paciente WHERE email = ?";
+        String sql = "SELECT * from Paciente p WHERE p.email = ?";
 
         try {
             Connection conn = this.getConnection();

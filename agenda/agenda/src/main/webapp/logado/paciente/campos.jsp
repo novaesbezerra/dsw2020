@@ -24,10 +24,10 @@
 			value="<c:out value='${paciente.nome}' />" /></td>
 	</tr>
 	<tr>
-		<td><label for="login"><fmt:message key="user.login" />
+		<td><label for="email"><fmt:message key="user.email" />
 		</label></td>
-		<td><input type="text" name="login" size="20" required
-			value="<c:out value='${paciente.login}' />" /></td>
+		<td><input type="text" name="email" size="60" required
+			value="<c:out value='${paciente.email}' />" /></td>
 	</tr>
 	<tr>
 		<td><label for="senha"><fmt:message key="user.password" />
