@@ -2,15 +2,16 @@ package br.ufscar.dc.dsw.domain;
 
 public class Medico {
 
-	private long crm;
+	private Long id;
+	private Long crm;
 	private String nome;
 	private String senha;
 	private String especialidade;
 	private String email;
 
-	public Medico(Long crm) {
-		this.crm = crm;
-	}
+    public Medico(Long id) {
+        this.id = id;
+    }
 
 	public Medico(Long crm, String nome, String senha, String especialidade, String email) {
 		this.crm = crm;
@@ -19,6 +20,10 @@ public class Medico {
 		this.email = email;
 		this.senha = senha;
 	}
+
+    public Long getId() {
+        return id;
+    }
 
 	public Long getcrm() {
 		return crm;

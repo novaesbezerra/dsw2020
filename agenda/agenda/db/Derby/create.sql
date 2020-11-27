@@ -1,29 +1,20 @@
 connect 'jdbc:derby:Agenda;create=true;user=root;password=root';
 
-create table Especialidade(id bigint not null generated always as identity, cnpj varchar(18) not null, nome varchar(256) not null, constraint Especialidade_PK primary key (id));
+create table Medico(id bigint not null auto_increment, crm varchar(256) not null unique, nome varchar(256) not null,  senha varchar(64) not null, email varchar(128) not null, especialidade varchar(256) not null);
 
-create table Medico(id bigint not null generated always as identity, titulo varchar(256) not null, autor varchar(256) not null, ano integer not null, preco float not null, especialidade_id bigint not null, constraint Medico_PK primary key (id), constraint Especialidade_FK foreign key (especialidade_id) references Especialidade(id));
+insert into Medico(crm, nome, senha, email, especialidade) values ('12345678', 'José Maria', '123abc', 'jose_maria@gmail.com', 'Clinico Geral');
 
-insert into Especialidade(cnpj, nome) values  ('55.789.390/0008-99', 'Companhia das Letras');
+insert into Medico(crm, nome, senha, email, especialidade) values ('87654321', 'João Ciniro', '123abc', 'ciniro@gmail.com', 'Ginecologista');
 
-insert into Especialidade(cnpj, nome) values ('71.150.470/0001-40', 'Record');
+insert into Medico(crm, nome, senha, email, especialidade) values ('98765432', 'Joaquim Zagatti', '123abc', 'zagatti@gmail.com', 'Cardiologista');
 
-insert into Especialidade(cnpj, nome) values ('32.106.536/0001-82', 'Objetiva');
+create table Paciente(id bigint not null auto_increment, nome varchar(256) not null, email varchar(128) not null, senha varchar(64) not null, cpf varchar(12) not null, telefone varchar(20), sexo varchar(20), nascimento varchar(10), primary key (id));
 
-insert into Medico(titulo, autor, ano, preco, especialidade_id) values ('Ensaio sobre a Cegueira', 'José Saramago', 1995, 54.9, 1);
+insert into Paciente(nome, email, senha, cpf, telefone, sexo, nascimento) values ('Juraci Carvalho', 'juraci@gmail.com', '123456', '123.456.789-00', '', 'FEM', '01/05/1900');
 
-insert into Medico(titulo, autor, ano, preco, especialidade_id) values  ('Cem anos de Solidão', 'Gabriel Garcia Márquez', 1977, 59.9, 2);
+insert into Paciente(nome, email, senha, cpf, telefone, sexo, nascimento) values ('Juarez', 'juarez@gmail.com', '123456', '123.456.789-00', '', 'MASC', '01/06/1900');
 
-insert into Medico(titulo, autor, ano, preco, especialidade_id) values ('Diálogos Impossíveis', 'Luis Fernando Verissimo', 2012, 22.9, 3);
-
-create table Paciente(id bigint not null generated always as identity (start with 1, increment by 1), nome varchar(256) not null, login varchar(20) not null unique, senha varchar(64) not null, papel varchar(10), constraint Paciente_PK primary key (id));
-
-insert into Paciente(nome, login, senha, papel) values ('Administrador', 'admin', 'admin', 'ADMIN');
-
-insert into Paciente(nome, login, senha, papel) values ('Paciente', 'user', 'user', 'USER');
-
-
-create table Consulta(id bigint not null generated always as identity, data varchar(10) not null, valor float not null, medico_id bigint not null, paciente_id bigint not null, constraint Consulta_PK primary key (id), constraint LIVRO_FK foreign key (medico_id) references Medico(id), constraint USUARIO_FK foreign key (paciente_id) references Paciente(id));
+create table Consulta(id bigint not null auto_increment, data varchar(10) not null, valor float not null, medico_id bigint not null, paciente_id bigint not null, primary key (id), foreign key (medico_id) references Medico(id), foreign key (paciente_id) references Paciente(id));
 
 insert into Consulta(data, valor, medico_id, paciente_id) values ('30/11/2020', 188, 1, 2);
 

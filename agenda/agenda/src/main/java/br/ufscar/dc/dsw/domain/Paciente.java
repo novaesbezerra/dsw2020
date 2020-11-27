@@ -2,27 +2,31 @@ package br.ufscar.dc.dsw.domain;
 
 public class Paciente {
 
-	private long cpf;
+	private Long id;
+	private Long cpf;
 	private String nome;
 	private int sexo;
 	private String senha;
 	private String email;
 	private String telefone;
 	private String nascimento;
-	
-	public Paciente(Long cpf) {
-		this.cpf = cpf;
+
+	public Paciente(Long id) {
+		this.id = id;
 	}
-	
+
 	public Paciente(Long cpf, String nome, int sexo, String nascimento, String senha) {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.sexo = sexo;
 		this.nascimento = nascimento;
 		this.senha = senha;
-		
 	}
-	
+
+    public Long getId() {
+        return id;
+    }
+
 	public Long getcpf() {
 		return cpf;
 	}
@@ -66,7 +70,7 @@ public class Paciente {
     public void setsexo(Integer sexo) {
         this.sexo = sexo;
     }
-    
+
     public String gettelefone() {
         return telefone;
     }
