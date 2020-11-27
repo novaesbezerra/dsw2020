@@ -26,10 +26,10 @@ abstract public class GenericDAO {
 
         /* Conexão banco de dados Derby */
 
-        // return DriverManager.getConnection("jdbc:derby://localhost:1527/Agenda", "root", "root");
+        // return DriverManager.getConnection("jdbc:derby://localhost:1527/agenda", "root", "root");
 
         /* Conexão banco de dados MySQL */
 
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/Agenda", "root", "root");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda", "root", "root");
     }
 }

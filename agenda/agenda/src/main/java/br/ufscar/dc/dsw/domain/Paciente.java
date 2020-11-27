@@ -5,7 +5,7 @@ public class Paciente {
 	private Long id;
 	private Long cpf;
 	private String nome;
-	private int sexo;
+	private String sexo;
 	private String senha;
 	private String email;
 	private String telefone;
@@ -15,67 +15,74 @@ public class Paciente {
 		this.id = id;
 	}
 
-	public Paciente(Long cpf, String nome, int sexo, String nascimento, String senha) {
+	public Paciente(Long cpf, String nome, String email, String telefone, String sexo, String nascimento, String senha) {
 		this.cpf = cpf;
 		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
 		this.sexo = sexo;
 		this.nascimento = nascimento;
 		this.senha = senha;
 	}
 
+    public Paciente(Long id, Long cpf, String nome, String email, String telefone, String sexo, String nascimento, String senha) {
+        this(cpf, nome, email, telefone, sexo, nascimento, senha);
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
 
-	public Long getcpf() {
+	public Long getCpf() {
 		return cpf;
 	}
-	public void setcpf(Long cpf) {
+	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
 
-	public String getemail() {
+	public String getEmail() {
 		return email;
 	}
-	public void setemail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
 
-	public String getsenha() {
+	public String getSenha() {
 		return senha;
 	}
-	public void setsenha(String senha) {
+	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
-    public String getnome() {
+    public String getNome() {
         return nome;
     }
-    public void setnome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getnascimento() {
+    public String getNascimento() {
         return nascimento;
     }
 
-    public void setnascimento(String nascimento) {
+    public void setNascimento(String nascimento) {
     	this.nascimento = nascimento;
     }
-    public int getsexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setsexo(Integer sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
-    public String gettelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void settelefone(String telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

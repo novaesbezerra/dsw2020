@@ -1,12 +1,12 @@
-connect 'jdbc:derby:Agenda;create=true;user=root;password=root';
+connect 'jdbc:derby:agenda;create=true;user=root;password=root';
 
-create table Medico(id bigint not null auto_increment, crm varchar(256) not null unique, nome varchar(256) not null,  senha varchar(64) not null, email varchar(128) not null, especialidade varchar(256) not null);
+create table Medico(id bigint not null auto_increment, crm integer not null unique, nome varchar(256) not null,  senha varchar(64) not null, email varchar(128) not null, especialidade varchar(256) not null);
 
-insert into Medico(crm, nome, senha, email, especialidade) values ('12345678', 'José Maria', '123abc', 'jose_maria@gmail.com', 'Clinico Geral');
+insert into Medico(crm, nome, senha, email, especialidade) values (12345678, 'José Maria', '123abc', 'jose_maria@gmail.com', 'Clinico Geral');
 
-insert into Medico(crm, nome, senha, email, especialidade) values ('87654321', 'João Ciniro', '123abc', 'ciniro@gmail.com', 'Ginecologista');
+insert into Medico(crm, nome, senha, email, especialidade) values (87654321, 'João Ciniro', '123abc', 'ciniro@gmail.com', 'Ginecologista');
 
-insert into Medico(crm, nome, senha, email, especialidade) values ('98765432', 'Joaquim Zagatti', '123abc', 'zagatti@gmail.com', 'Cardiologista');
+insert into Medico(crm, nome, senha, email, especialidade) values (98765432, 'Joaquim Zagatti', '123abc', 'zagatti@gmail.com', 'Cardiologista');
 
 create table Paciente(id bigint not null auto_increment, nome varchar(256) not null, email varchar(128) not null, senha varchar(64) not null, cpf varchar(12) not null, telefone varchar(20), sexo varchar(20), nascimento varchar(10), primary key (id));
 

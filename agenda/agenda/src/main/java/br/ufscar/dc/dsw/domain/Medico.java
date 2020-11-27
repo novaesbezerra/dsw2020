@@ -21,6 +21,11 @@ public class Medico {
 		this.senha = senha;
 	}
 
+    public Medico(Long id, Long crm, String nome, String senha, String especialidade, String email) {
+        this(crm, nome, senha, especialidade, email);
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

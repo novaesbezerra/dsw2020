@@ -22,13 +22,13 @@ public class PacienteDAO extends GenericDAO {
             PreparedStatement statement = conn.prepareStatement(sql);;
 
             statement = conn.prepareStatement(sql);
-            statement.setLong(1, paciente.getcpf());
-            statement.setString(2, paciente.getnome());
-            statement.setInt(3, paciente.getsexo());
-            statement.setString(4, paciente.getsenha());
-            statement.setString(5, paciente.getemail());
-            statement.setString(6, paciente.gettelefone());
-            statement.setString(7, paciente.getnascimento());
+            statement.setLong(1, paciente.getCpf());
+            statement.setString(2, paciente.getNome());
+            statement.setString(3, paciente.getSexo());
+            statement.setString(4, paciente.getSenha());
+            statement.setString(5, paciente.getEmail());
+            statement.setString(6, paciente.getTelefone());
+            statement.setString(7, paciente.getNascimento());
 
             statement.executeUpdate();
 
@@ -53,14 +53,13 @@ public class PacienteDAO extends GenericDAO {
             while (resultSet.next()) {
                 Long cpf = resultSet.getLong("cpf");
                 String nome = resultSet.getString("nome");
-                int sexo = resultSet.getInt("sexo");
+                String sexo = resultSet.getString("sexo");
                 String senha = resultSet.getString("senha");
                 String email = resultSet.getString("email");
                 String telefone = resultSet.getString("telefone");
                 String nascimento = resultSet.getString("nascimento");
 
-                //Editora editora = new Editora(editora_id, cnpj, nome);
-                Paciente paciente = new Paciente(cpf, nome, sexo, nascimento, senha);
+                Paciente paciente = new Paciente(cpf, nome, email, telefone, sexo, nascimento, senha);
                 listaPacientes.add(paciente);
             }
 
@@ -80,7 +79,7 @@ public class PacienteDAO extends GenericDAO {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setLong(1, paciente.getcpf());
+            statement.setLong(1, paciente.getCpf());
             statement.executeUpdate();
 
             statement.close();
@@ -98,13 +97,13 @@ public class PacienteDAO extends GenericDAO {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setLong(1, paciente.getcpf());
-            statement.setString(2, paciente.getnome());
-            statement.setInt(3, paciente.getsexo());
-            statement.setString(4, paciente.getsenha());
-            statement.setString(5, paciente.getemail());
-            statement.setString(6, paciente.gettelefone());
-            statement.setString(7, paciente.getnascimento());
+            statement.setLong(1, paciente.getCpf());
+            statement.setString(2, paciente.getNome());
+            statement.setString(3, paciente.getSexo());
+            statement.setString(4, paciente.getSenha());
+            statement.setString(5, paciente.getEmail());
+            statement.setString(6, paciente.getTelefone());
+            statement.setString(7, paciente.getNascimento());
             statement.executeUpdate();
 
             statement.close();
@@ -127,13 +126,45 @@ public class PacienteDAO extends GenericDAO {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 String nome = resultSet.getString("nome");
-                int sexo = resultSet.getInt("sexo");
+                String sexo = resultSet.getString("sexo");
                 String senha = resultSet.getString("senha");
                 String email = resultSet.getString("email");
                 String telefone = resultSet.getString("telefone");
                 String nascimento = resultSet.getString("nascimento");
 
-                paciente = new Paciente(cpf, nome, sexo, nascimento, senha);
+                paciente = new Paciente(cpf, nome, email, telefone, sexo, nascimento, senha);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return paciente;
+    }
+
+    public Paciente getbyEmail(String email) {
+        Paciente paciente = null;
+
+        String sql = "SELECT * from Paciente WHERE email = ?";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                Long cpf = resultSet.getLong("cpf");
+                String nome = resultSet.getString("nome");
+                String sexo = resultSet.getString("sexo");
+                String senha = resultSet.getString("senha");
+                String telefone = resultSet.getString("telefone");
+                String nascimento = resultSet.getString("nascimento");
+
+                paciente = new Paciente(id, cpf, nome, email, telefone, sexo, nascimento, senha);
             }
 
             resultSet.close();
