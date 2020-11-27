@@ -3,16 +3,16 @@ package br.ufscar.dc.dsw.domain;
 public class Medico {
 
 	private long crm;
-	private String email;
-	private String senha;
 	private String nome;
+	private String senha;
 	private String especialidade;
-	
+	private String email;
+
 	public Medico(Long crm) {
 		this.crm = crm;
 	}
 	
-	public Medico(Long crm, String nome, String especialidade, String email, String senha) {
+	public Medico(Long crm, String nome, String senha, String especialidade, String email) {
 		this.crm = crm;
 		this.nome = nome;
 		this.especialidade = especialidade;
