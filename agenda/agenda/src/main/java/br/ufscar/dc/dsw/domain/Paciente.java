@@ -3,11 +3,11 @@ package br.ufscar.dc.dsw.domain;
 public class Paciente {
 
 	private long cpf;
-	private String email;
-	private String senha;
 	private String nome;
-	private String telefone;
 	private int sexo;
+	private String senha;
+	private String email;
+	private String telefone;
 	private String nascimento;
 	
 	public Paciente(Long cpf) {
@@ -29,6 +29,22 @@ public class Paciente {
 	public void setcpf(Long cpf) {
 		this.cpf = cpf;
 	}
+
+	public String getemail() {
+		return email;
+	}
+	public void setemail(String email) {
+		this.email = email;
+	}
+
+
+	public String getsenha() {
+		return senha;
+	}
+	public void setsenha(String senha) {
+		this.senha = senha;
+	}
+
     public String getnome() {
         return nome;
     }
