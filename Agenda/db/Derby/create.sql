@@ -1,4 +1,4 @@
-connect 'jdbc:derby:Livraria;create=true;user=root;password=root';
+connect 'jdbc:derby:Agenda;create=true;user=root;password=root';
 
 create table Especialidade(id bigint not null generated always as identity, cnpj varchar(18) not null, nome varchar(256) not null, constraint Especialidade_PK primary key (id));
 

@@ -17,11 +17,11 @@
 		%>
 		<div align="center">
 			<h1>
-				<fmt:message key="books.welcome" />
+				<fmt:message key="doctors.welcome" />
 			</h1>
 			<h2>
 				<a href="/<%=contextPath%>/especialidades">
-					<fmt:message key="publishers.entity" />
+					<fmt:message key="specialties.entity" />
 				</a>
 				&nbsp;&nbsp;&nbsp;
 				<a href="/<%=contextPath%>/pacientes"> 
@@ -34,21 +34,21 @@
 				<br/>
 				<br/>
 				<a href="/<%=contextPath%>/medicos/cadastro">
-					<fmt:message key="books.create" />
+					<fmt:message key="doctors.create" />
 				</a>
 			</h2>
-			<h3><fmt:message key="books.list" /></h3>
+			<h3><fmt:message key="doctors.list" /></h3>
 			<br/>
 		</div>
 		<div align="center">
 			<table border="1">
 				<tr>
-					<th><fmt:message key="book.ID" /></th>
-					<th><fmt:message key="book.title" /></th>
-					<th><fmt:message key="book.publisher" /></th>
-					<th><fmt:message key="book.author" /></th>
-					<th><fmt:message key="book.year" /></th>
-					<th><fmt:message key="book.price" /></th>
+					<th><fmt:message key="doctor.ID" /></th>
+					<th><fmt:message key="doctor.title" /></th>
+					<th><fmt:message key="doctor.specialty" /></th>
+					<th><fmt:message key="doctor.author" /></th>
+					<th><fmt:message key="doctor.year" /></th>
+					<th><fmt:message key="doctor.price" /></th>
 					<th><fmt:message key="actions.link" /></th>
 				</tr>
 				<c:forEach var="medico" items="${requestScope.listaMedicos}">
@@ -60,11 +60,11 @@
 						<td>${medico.ano}</td>
 						<td>${medico.preco}</td>
 						<td><a href="/<%= contextPath%>/medicos/edicao?id=${medico.id}">
-								<fmt:message key="books.update" />
+								<fmt:message key="doctors.update" />
 						</a> &nbsp;&nbsp;&nbsp;&nbsp; <a
 							href="/<%= contextPath%>/medicos/remocao?id=${medico.id}"
 							onclick="return confirm('<fmt:message key="confirm.link" />');">
-								<fmt:message key="books.delete" />
+								<fmt:message key="doctors.delete" />
 						</a></td>
 					</tr>
 				</c:forEach>

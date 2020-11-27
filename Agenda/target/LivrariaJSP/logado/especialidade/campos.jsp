@@ -7,10 +7,10 @@
 	<caption>
 		<c:choose>
 			<c:when test="${especialidade != null}">
-				<fmt:message key="publishers.update" />
+				<fmt:message key="specialties.update" />
 			</c:when>
 			<c:otherwise>
-				<fmt:message key="publishers.create" />
+				<fmt:message key="specialties.create" />
 			</c:otherwise>
 		</c:choose>
 	</caption>
@@ -18,13 +18,13 @@
 		<input type="hidden" name="id" value="<c:out value='${especialidade.id}' />" />
 	</c:if>
 	<tr>
-		<td><label for="CNPJ"> <fmt:message key="publisher.CNPJ" />
+		<td><label for="CNPJ"> <fmt:message key="specialty.CNPJ" />
 		</label></td>
 		<td><input type="text" id="CNPJ" name="CNPJ" size="18" required
 			value="<c:out value='${especialidade.CNPJ}' />" /></td>
 	</tr>
 	<tr>
-		<td><label for="nome"><fmt:message key="publisher.name" />
+		<td><label for="nome"><fmt:message key="specialty.name" />
 		</label></td>
 		<td><input type="text" name="nome" size="45" required
 			value="<c:out value='${especialidade.nome}' />" /></td>

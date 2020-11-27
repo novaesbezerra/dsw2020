@@ -62,7 +62,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>LivrariaJSP</finalName>
+		<finalName>AgendaJSP</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>

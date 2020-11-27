@@ -1,8 +1,8 @@
-drop database Livraria;
+drop database Agenda;
 
-create database Livraria;
+create database Agenda;
 
-use Livraria;
+use Agenda;
 
 create table Especialidade(id bigint not null auto_increment, cnpj varchar(18) not null, nome varchar(256) not null, primary key (id));
 

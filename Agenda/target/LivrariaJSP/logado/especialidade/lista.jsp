@@ -16,11 +16,11 @@
 		%>
 		<div align="center">
 			<h1>
-				<fmt:message key="publishers.welcome" />
+				<fmt:message key="specialties.welcome" />
 			</h1>
 			<h2>
 				<a href="/<%=contextPath%>/medicos"> 
-					<fmt:message key="books.entity" />
+					<fmt:message key="doctors.entity" />
 				</a> 
 				&nbsp;&nbsp;&nbsp;
 				<a href="/<%=contextPath%>/pacientes"> 
@@ -33,18 +33,18 @@
 				<br/>
 				<br/>
 				<a href="/<%=contextPath%>/especialidades/cadastro">
-					<fmt:message key="publishers.create" />
+					<fmt:message key="specialties.create" />
 				</a> 
 			</h2>
-			<h3><fmt:message key="publishers.list" /></h3>
+			<h3><fmt:message key="specialties.list" /></h3>
 			<br/>
 		</div>
 		<div align="center">
 			<table border="1">
 				<tr>
-					<th><fmt:message key="publisher.ID" /></th>
-					<th><fmt:message key="publisher.CNPJ" /></th>
-					<th><fmt:message key="publisher.name" /></th>
+					<th><fmt:message key="specialty.ID" /></th>
+					<th><fmt:message key="specialty.CNPJ" /></th>
+					<th><fmt:message key="specialty.name" /></th>
 					<th><fmt:message key="actions.link" /></th>
 				</tr>
 				<c:forEach var="especialidade" items="${requestScope.listaEspecialidades}">
@@ -54,13 +54,13 @@
 						<td><c:out value="${especialidade.nome}" /></td>
 						<td><a
 							href="/<%= contextPath %>/especialidades/edicao?id=<c:out value='${especialidade.id}' />">
-								<fmt:message key="publishers.update" />
+								<fmt:message key="specialties.update" />
 						</a> <c:if test="${especialidade.qtdeMedicos == 0}">
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <a
 									href="/<%= contextPath %>/especialidades/remocao?id=<c:out value='${especialidade.id}' />"
 									onclick="return confirm('<fmt:message key="confirm.link" />');">
-									<fmt:message key="publishers.delete" />
+									<fmt:message key="specialties.delete" />
 								</a>
 							</c:if></td>
 					</tr>

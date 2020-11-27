@@ -16,11 +16,11 @@
 		%>
 		<div align="center">
 			<h1>
-				<fmt:message key="books.welcome" />
+				<fmt:message key="doctors.welcome" />
 			</h1>
 			<h2>
 				<a href="/<%=contextPath%>/especialidades">
-					<fmt:message key="publishers.entity" />
+					<fmt:message key="specialties.entity" />
 				</a>
 				&nbsp;&nbsp;&nbsp;
 				<a href="/<%=contextPath%>/pacientes"> 
@@ -32,7 +32,7 @@
 				<br/>
 				<br/>
 				<a href="lista"> 
-					<fmt:message key="books.list" />
+					<fmt:message key="doctors.list" />
 				</a>
 			</h2>
 		</div>
