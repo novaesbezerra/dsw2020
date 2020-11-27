@@ -11,16 +11,15 @@ public class Medico {
 	public Medico(Long crm) {
 		this.crm = crm;
 	}
-	
+
 	public Medico(Long crm, String nome, String senha, String especialidade, String email) {
 		this.crm = crm;
 		this.nome = nome;
 		this.especialidade = especialidade;
 		this.email = email;
 		this.senha = senha;
-		
 	}
-	
+
 	public Long getcrm() {
 		return crm;
 	}

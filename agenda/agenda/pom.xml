@@ -58,7 +58,7 @@
   </dependencies>
 
   <build>
-    <finalName>agenda</finalName>
+    <finalName>Agenda</finalName>
     <plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>

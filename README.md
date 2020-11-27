@@ -1,7 +1,7 @@
 # dsw2020
 Disciplina de Desenvolvimento Web
 
-Documento de Requisitos - B 
+Documento de Requisitos - B
 Sistema para agendamento de consultas médicas
 
 Integrantes:
