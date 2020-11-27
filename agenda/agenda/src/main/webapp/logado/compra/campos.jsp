@@ -19,7 +19,7 @@
 			<td style="width: 10%; text-align: center"><input type="radio"
 				id="${medico.key}" name="medico" value="${medico.key}" required></td>
 			<td>${medico.value.titulo}</td>
-			<td>${medico.value.especialidade.nome}</td>
+			<td>${medico.value.especialidade}</td>
 			<td>${medico.value.autor}</td>
 			<td>${medico.value.ano}</td>
 			<td>${medico.value.preco}</td>

@@ -55,7 +55,7 @@
 					<tr>
 						<td>${medico.id}</td>
 						<td>${medico.titulo}</td>
-						<td>${medico.especialidade.nome}</td>
+						<td>${medico.especialidade}</td>
 						<td>${medico.autor}</td>
 						<td>${medico.ano}</td>
 						<td>${medico.preco}</td>
