@@ -8,26 +8,31 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+//import br.ufscar.dc.dsw.domain.Long;
 //import br.ufscar.dc.dsw.domain.Editora;
 import br.ufscar.dc.dsw.domain.Paciente;
+//import br.ufscar.dc.dsw.domain.String;
 
 public class PacienteDAO extends GenericDAO {
 
     public void insert(Paciente paciente) {
 
-        String sql = "INSERT INTO Paciente (cpf, nome, sexo, senha, email, telefone, nascimento) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    	//Paciente(nome, email, senha, cpf, telefone, sexo, nascimento)
+    	
+        String sql = "INSERT INTO Paciente (id, nome, email, senha, cpf, telefone, sexo, nascimento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);;
 
             statement = conn.prepareStatement(sql);
-            statement.setLong(1, paciente.getCpf());
+            statement.setLong(1, paciente.getId());
             statement.setString(2, paciente.getNome());
-            statement.setString(3, paciente.getSexo());
-            statement.setString(4, paciente.getSenha());
             statement.setString(5, paciente.getEmail());
+            statement.setString(4, paciente.getSenha());
+            statement.setLong(4, paciente.getCpf());
             statement.setString(6, paciente.getTelefone());
+            statement.setString(3, paciente.getSexo());
             statement.setString(7, paciente.getNascimento());
 
             statement.executeUpdate();
@@ -51,15 +56,16 @@ public class PacienteDAO extends GenericDAO {
 
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                Long cpf = resultSet.getLong("cpf");
+                Long id = resultSet.getLong("id");
                 String nome = resultSet.getString("nome");
-                String sexo = resultSet.getString("sexo");
-                String senha = resultSet.getString("senha");
                 String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                Long cpf = resultSet.getLong("cpf");
                 String telefone = resultSet.getString("telefone");
+                String sexo = resultSet.getString("sexo");           
                 String nascimento = resultSet.getString("nascimento");
 
-                Paciente paciente = new Paciente(cpf, nome, email, telefone, sexo, nascimento, senha);
+                Paciente paciente = new Paciente(id, nome, email, senha, cpf, telefone, sexo, nascimento);
                 listaPacientes.add(paciente);
             }
 
@@ -132,7 +138,7 @@ public class PacienteDAO extends GenericDAO {
                 String telefone = resultSet.getString("telefone");
                 String nascimento = resultSet.getString("nascimento");
 
-                paciente = new Paciente(cpf, nome, email, telefone, sexo, nascimento, senha);
+                paciente = new Paciente(nome, email, senha, cpf, telefone, sexo, nascimento);
             }
 
             resultSet.close();
@@ -164,7 +170,7 @@ public class PacienteDAO extends GenericDAO {
                 String telefone = resultSet.getString("telefone");
                 String nascimento = resultSet.getString("nascimento");
 
-                paciente = new Paciente(id, cpf, nome, email, telefone, sexo, nascimento, senha);
+                paciente = new Paciente(id, nome, email, senha, cpf, telefone, sexo, nascimento);
             }
 
             resultSet.close();

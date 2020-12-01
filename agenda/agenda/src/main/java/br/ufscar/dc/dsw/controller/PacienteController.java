@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.dao.PacienteDAO;
+//import br.ufscar.dc.dsw.domain.Long;
 import br.ufscar.dc.dsw.domain.Paciente;
+//import br.ufscar.dc.dsw.domain.String;
 import br.ufscar.dc.dsw.util.Erro;
 
 @WebServlet(urlPatterns = "/pacientes/*")
@@ -115,7 +117,7 @@ public class PacienteController extends HttpServlet {
 		String nascimento = request.getParameter("nascimento");
 		String senha = request.getParameter("senha");
 
-		Paciente paciente = new Paciente(cpf, nome, email, telefone, sexo, nascimento, senha);
+		Paciente paciente = new Paciente(nome, email, senha, cpf, telefone, sexo, nascimento);
 
 		dao.insert(paciente);
 		response.sendRedirect("lista");
@@ -134,7 +136,7 @@ public class PacienteController extends HttpServlet {
 		String nascimento = request.getParameter("nascimento");
 		String senha = request.getParameter("senha");
 
-		Paciente paciente = new Paciente(id, cpf, nome, email, telefone, sexo, nascimento, senha);
+		Paciente paciente = new Paciente(id, nome, email, senha, cpf, telefone, sexo, nascimento);
 
 		dao.update(paciente);
 		response.sendRedirect("lista");
