@@ -10,7 +10,7 @@ public class Paciente {
 	private String telefone;
 	private String sexo;
 	private String nascimento;
-
+	
 	public Paciente(Long id) {
 		this.id = id;
 	}

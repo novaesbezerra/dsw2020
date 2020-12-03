@@ -34,13 +34,13 @@ public class IndexController extends HttpServlet {
 				PacienteDAO dao = new PacienteDAO();
 				Paciente paciente = dao.getbyEmail(email);
 				if (paciente != null) {
-					if (paciente.getSenha().equalsIgnoreCase(senha)) {
+					if (paciente.getSenha().equals(senha)) {
 						request.getSession().setAttribute("pacienteLogado", paciente);
-						if (paciente.getId().equals(1)) {
+						//if (1) { /*/paciente.getId() != null*/ 
 							response.sendRedirect("pacientes/");
-						} else {
-							response.sendRedirect("consultas/");
-						}
+						//} else {
+							//response.sendRedirect("consultas/");
+						//}
 						return;
 					} else {
 						erros.add("Senha inválida!");

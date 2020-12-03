@@ -6,30 +6,22 @@ import java.sql.SQLException;
 
 abstract public class GenericDAO {
 
-    public GenericDAO() {
-        try {
+	public GenericDAO() {
+		try {
 
-            /* Setup Banco de dados Derby */
+			/* Setup Banco de dados MySQL */
 
-            // Class.forName("org.apache.derby.jdbc.ClientDriver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 
-            /* Setup Banco de dados MySQL */
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
+	protected Connection getConnection() throws SQLException {
 
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
+		/* Conexão banco de dados MySQL */
 
-    protected Connection getConnection() throws SQLException {
-
-        /* Conexão banco de dados Derby */
-
-        // return DriverManager.getConnection("jdbc:derby://localhost:1527/agenda", "root", "root");
-
-        /* Conexão banco de dados MySQL */
-
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda", "root", "root");
-    }
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda", "root", "root");
+	}
 }

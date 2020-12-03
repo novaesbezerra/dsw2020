@@ -10,13 +10,14 @@ public class AcessaBD {
 
     public static void main(String[] args) {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            Connection con = (Connection) DriverManager.getConnection(""
-                    + "jdbc:derby://localhost:1527/agenda", "root", "root");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/agenda";
+            Connection con = (Connection) DriverManager.getConnection(url, "root", "root");
+
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from Consulta");
             while (rs.next()) {
-                System.out.print(rs.getString("data"));
+                System.out.println(rs.getString("data"));
             }
             stmt.close();
             con.close();

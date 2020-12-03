@@ -55,7 +55,9 @@
 						<td><c:out value="${paciente.email}" /></td>
 						<td><c:out value="${paciente.senha}" /></td>
 						<td><c:out value="${paciente.nome}" /></td>
-						<td><c:out value="${paciente.papel}" /></td>
+			<%-- Comment --%>
+			<%-- <td><c:out value="${paciente.papel}" /></td> --%>
+						
 						<td><a
 							href="/<%= contextPath %>/pacientes/edicao?id=<c:out value='${paciente.id}' />">
 								<fmt:message key="users.update" />
