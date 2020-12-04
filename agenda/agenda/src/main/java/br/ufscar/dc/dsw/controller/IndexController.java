@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.ufscar.dc.dsw.dao.AdminDAO;
 import br.ufscar.dc.dsw.dao.PacienteDAO;
 import br.ufscar.dc.dsw.domain.Paciente;
+import br.ufscar.dc.dsw.domain.Admin;
 import br.ufscar.dc.dsw.util.Erro;
 
 @WebServlet(name = "Index", urlPatterns = { "/index.jsp", "/logout.jsp" })
@@ -31,13 +33,13 @@ public class IndexController extends HttpServlet {
 				erros.add("Senha não informada!");
 			}
 			if (!erros.isExisteErros()) {
-				PacienteDAO dao = new PacienteDAO();
-				Paciente paciente = dao.getbyEmail(email);
-				if (paciente != null) {
-					if (paciente.getSenha().equals(senha)) {
-						request.getSession().setAttribute("pacienteLogado", paciente);
+				AdminDAO adm = new AdminDAO();
+				Admin admin = adm.getbyLogin(email);
+				if(admin != null) {
+					if (admin.getSenha().equals(senha)) {
+						request.getSession().setAttribute("adminLogado", admin);
 						//if (1) { /*/paciente.getId() != null*/ 
-							response.sendRedirect("pacientes/");
+							response.sendRedirect("admin/");
 						//} else {
 							//response.sendRedirect("consultas/");
 						//}
@@ -46,8 +48,24 @@ public class IndexController extends HttpServlet {
 						erros.add("Senha inválida!");
 					}
 				} else {
-					erros.add("Usuário não encontrado!");
-				}
+					PacienteDAO pac = new PacienteDAO();
+					Paciente paciente = pac.getbyEmail(email);
+					if (paciente != null) {
+						if (paciente.getSenha().equals(senha)) {
+							request.getSession().setAttribute("pacienteLogado", paciente);
+							//if (1) { /*/paciente.getId() != null*/ 
+								response.sendRedirect("consultas/");
+							//} else {
+								//response.sendRedirect("consultas/");
+							//}
+							return;
+						} else {
+							erros.add("Senha inválida!");
+						}
+					} else {
+						erros.add("Usuário não encontrado!");
+					}
+				}			
 			}
 		}
 		request.getSession().invalidate();

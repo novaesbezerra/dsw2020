@@ -16,8 +16,8 @@ import br.ufscar.dc.dsw.domain.Paciente;
 //import br.ufscar.dc.dsw.domain.String;
 import br.ufscar.dc.dsw.util.Erro;
 
-@WebServlet(urlPatterns = "/foo/*")
-public class PacienteController extends HttpServlet {
+@WebServlet(urlPatterns = "/admin/*")
+public class AdminController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 

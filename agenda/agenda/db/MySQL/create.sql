@@ -4,10 +4,11 @@ create database agenda;
 
 use agenda;
 
+
 create table Admin(
 	id bigint not null auto_increment, 
 	login varchar(128) not null,
-	senha varchar(64) not null
+	senha varchar(64) not null,
 	primary key(id)
 );
 
@@ -21,7 +22,8 @@ create table Medico(
 	primary key(id),
 	especialidade varchar(256) not null);
 
-insert into Admin('admin', 'admin');
+insert into Admin(login, senha)
+	values ('admin', 'admin');
 
 insert into Medico(crm, nome, senha, email, especialidade) 
 	values (12345678, 'José Maria', '123abc', 'jose_maria@gmail.com', 'Clinico Geral');
