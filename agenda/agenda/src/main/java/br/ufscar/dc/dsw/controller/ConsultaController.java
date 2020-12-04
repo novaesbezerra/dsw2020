@@ -47,7 +47,7 @@ public class ConsultaController extends HttpServlet {
 		if (paciente == null) {
 			response.sendRedirect(request.getContextPath());
 			return;
-		} else if (!paciente.getId().equals(1)) {
+		} else if (paciente.getId().equals(0)) {
 			erros.add("Acesso não autorizado!");
 			request.setAttribute("mensagens", erros);
 			RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");

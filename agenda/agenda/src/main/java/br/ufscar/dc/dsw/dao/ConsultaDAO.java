@@ -39,7 +39,7 @@ public class ConsultaDAO extends GenericDAO {
 
         List<Consulta> listaConsultas = new ArrayList<>();
 
-        String sql = "SELECT * from Consulta c where c.USUARIO_ID = ? order by c.ID";
+        String sql = "SELECT * from Consulta c where c.paciente_id = ? order by c.ID";
 
         try {
         	Connection conn = this.getConnection();
