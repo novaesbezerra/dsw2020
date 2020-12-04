@@ -44,21 +44,19 @@
 			<table border="1">
 				<tr>
 					<th><fmt:message key="doctor.ID" /></th>
-					<th><fmt:message key="doctor.title" /></th>
+					<th><fmt:message key="doctor.crm" /></th>
+					<th><fmt:message key="doctor.name" /></th>
 					<th><fmt:message key="doctor.specialty" /></th>
-					<th><fmt:message key="doctor.author" /></th>
-					<th><fmt:message key="doctor.year" /></th>
-					<th><fmt:message key="doctor.price" /></th>
+					<th><fmt:message key="doctor.email" /></th>
 					<th><fmt:message key="actions.link" /></th>
 				</tr>
 				<c:forEach var="medico" items="${requestScope.listaMedicos}">
 					<tr>
 						<td>${medico.id}</td>
-						<td>${medico.titulo}</td>
+						<td>${medico.crm}</td>
+						<td>${medico.nome}</td>
 						<td>${medico.especialidade}</td>
-						<td>${medico.autor}</td>
-						<td>${medico.ano}</td>
-						<td>${medico.preco}</td>
+						<td>${medico.email}</td>
 						<td><a href="/<%= contextPath%>/medicos/edicao?id=${medico.id}">
 								<fmt:message key="doctors.update" />
 						</a> &nbsp;&nbsp;&nbsp;&nbsp; <a

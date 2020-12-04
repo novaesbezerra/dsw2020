@@ -19,40 +19,28 @@
 		<input type="hidden" name="id" value="${medico.id}" />
 	</c:if>
 	<tr>
-		<td><label for="titulo"> <fmt:message key="doctor.title" />
+		<td><label for="crm"> <fmt:message key="doctor.crm" />
 		</label></td>
-		<td><input type="text" id="titulo" name="titulo" size="45"
-			required value="${medico.titulo}" /></td>
+		<td><input type="number" id="crm" name="crm" size="45"
+			required value="${medico.crm}" /></td>
 	</tr>
 	<tr>
-		<td><label for="autor"> <fmt:message key="doctor.author" />
+		<td><label for="nome"> <fmt:message key="doctor.nome" />
 		</label></td>
-		<td><input type="text" id="autor" name="autor" size="45" required
-			value="${medico.autor}" /></td>
+		<td><input type="text" id="nome" name="nome" size="45" required
+			value="${medico.nome}" /></td>
 	</tr>
 	<tr>
-		<td><label for="especialidade"> <fmt:message
-					key="doctor.specialty" />
+		<td><label for="especialidade"> <fmt:message key="doctor.especialidade" />
 		</label></td>
-		<td><select name="especialidade">
-				<c:forEach items="${especialidades}" var="especialidade">
-					<option value="${especialidade.key}"
-						${medico.especialidade.nome==especialidade.value ? 'selected' : '' }>
-						${especialidade.value}</option>
-				</c:forEach>
-		</select></td>
+		<td><input type="text" id="especialidade" name="especialidade" size="45" required
+			value="${medico.especialidade}" /></td>
 	</tr>
 	<tr>
-		<td><label for="ano"> <fmt:message key="doctor.year" />
+		<td><label for="email"> <fmt:message key="doctor.email" />
 		</label></td>
-		<td><input type="number" id="ano" name="ano" size="5" required
-			min="1500" value="${medico.ano}" /></td>
-	</tr>
-	<tr>
-		<td><label for="preco"> <fmt:message key="doctor.price" />
-		</label></td>
-		<td><input type="number" id="preco" name="preco" required
-			min="0.01" step="any" size="5" value="${medico.preco}" /></td>
+		<td><input type="text" id="email" name="email" size="45" required
+			value="${medico.email}" /></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center"><input type="submit"

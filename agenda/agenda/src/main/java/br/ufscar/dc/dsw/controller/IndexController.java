@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.ufscar.dc.dsw.dao.AdminDAO;
+import br.ufscar.dc.dsw.dao.PacienteDAO;
+import br.ufscar.dc.dsw.dao.MedicoDAO;
 import br.ufscar.dc.dsw.domain.Paciente;
 import br.ufscar.dc.dsw.domain.Admin;
+import br.ufscar.dc.dsw.domain.Medico;
 import br.ufscar.dc.dsw.util.Erro;
 import br.ufscar.dc.dsw.dao.AdminDAO;
 import br.ufscar.dc.dsw.dao.PacienteDAO;
@@ -35,6 +39,10 @@ public class IndexController extends HttpServlet {
 			if (!erros.isExisteErros()) {
 				AdminDAO adm = new AdminDAO();
 				Admin admin = adm.getbyLogin(email);
+				PacienteDAO pac = new PacienteDAO();
+				Paciente paciente = pac.getbyEmail(email);
+				MedicoDAO med = new MedicoDAO();
+				Medico medico = med.getbyEmail(email);
 				if(admin != null) {
 					if (admin.getSenha().equals(senha)) {
 						request.getSession().setAttribute("adminLogado", admin);
@@ -47,25 +55,33 @@ public class IndexController extends HttpServlet {
 					} else {
 						erros.add("Senha inválida!");
 					}
-				} else {
-					PacienteDAO pac = new PacienteDAO();
-					Paciente paciente = pac.getbyEmail(email);
-					if (paciente != null) {
-						if (paciente.getSenha().equals(senha)) {
-							request.getSession().setAttribute("pacienteLogado", paciente);
-							//if (1) { /*/paciente.getId() != null*/ 
-								response.sendRedirect("consultas/");
-							//} else {
-								//response.sendRedirect("consultas/");
-							//}
-							return;
-						} else {
-							erros.add("Senha inválida!");
-						}
+				} else if (paciente != null) {
+					if (paciente.getSenha().equals(senha)) {
+						request.getSession().setAttribute("pacienteLogado", paciente);
+						//if (1) { /*/paciente.getId() != null*/ 
+							response.sendRedirect("consultas/");
+						//} else {
+							//response.sendRedirect("consultas/");
+						//}
+						return;
 					} else {
-						erros.add("Usuário não encontrado!");
+						erros.add("Senha inválida!");
 					}
-				}			
+				} else if (medico != null) {
+					if (medico.getsenha().equals(senha)) {
+						request.getSession().setAttribute("medicoLogado", medico);
+						//if (1) { /*/paciente.getId() != null*/ 
+							response.sendRedirect("medicos/");
+						//} else {
+							//response.sendRedirect("consultas/");
+						//}
+						return;
+					} else {
+						erros.add("Senha inválida!");
+					}
+				} else {
+					erros.add("Usuário não encontrado!");
+				}
 			}
 		}
 		request.getSession().invalidate();

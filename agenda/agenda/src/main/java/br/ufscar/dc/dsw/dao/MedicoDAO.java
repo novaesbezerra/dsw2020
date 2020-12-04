@@ -137,4 +137,33 @@ public class MedicoDAO extends GenericDAO {
         }
         return medico;
     }
+
+    public Medico getbyEmail(String email) {
+        Medico medico = null;
+
+        String sql = "SELECT * from Medico m WHERE m.email = ?";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Long crm = resultSet.getLong("crm");
+                String nome = resultSet.getString("nome");
+                String senha = resultSet.getString("senha");
+                String especialidade = resultSet.getString("especialidade");
+
+                medico = new Medico(crm, nome, senha, especialidade, email);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return medico;
+    }
 }
