@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.dao.PacienteDAO;
+import br.ufscar.dc.dsw.dao.AdminDAO;
 //import br.ufscar.dc.dsw.domain.Long;
 import br.ufscar.dc.dsw.domain.Paciente;
+import br.ufscar.dc.dsw.domain.Admin;
 //import br.ufscar.dc.dsw.domain.String;
 import br.ufscar.dc.dsw.util.Erro;
 
@@ -38,13 +40,13 @@ public class AdminController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Paciente paciente = (Paciente) request.getSession().getAttribute("pacienteLogado");
+		Admin admin = (Admin) request.getSession().getAttribute("adminLogado");
 		Erro erros = new Erro();
 
-		if (paciente == null) {
+		if (admin == null) {
 			response.sendRedirect(request.getContextPath());
 			return;
-		} else if (paciente.getId().equals(1000)) {  /////OLHAR ESSA PAGINA
+		} else if (!admin.getLogin().equals("admin")) {  /////OLHAR ESSA PAGINA
 			erros.add("Acesso não autorizado!");
 			erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
 			request.setAttribute("mensagens", erros);
