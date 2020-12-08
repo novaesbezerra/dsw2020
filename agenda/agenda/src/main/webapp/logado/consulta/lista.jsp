@@ -40,20 +40,20 @@
 					<th><fmt:message key="consultation.ID" /></th>
 					<th><fmt:message key="consultation.date" /></th>
 					<th><fmt:message key="consultation.value" /></th>
-					<th><fmt:message key="consultation.doctor.title" /></th>
+					<th><fmt:message key="consultation.doctor.name" /></th>
 					<th><fmt:message key="consultation.doctor.specialty" /></th>
-					<th><fmt:message key="consultation.doctor.author" /></th>
-					<th><fmt:message key="consultation.doctor.year" /></th>
+					<th><fmt:message key="consultation.doctor.email" /></th>
+					<th><fmt:message key="consultation.user.name" /></th>
 				</tr>
 				<c:forEach var="consulta" items="${requestScope.listaConsultas}">
 					<tr>
 						<td>${consulta.id}</td>
 						<td>${consulta.data}</td>
 						<td>${consulta.valor}</td>
-						<td>${consulta.medico.titulo}</td>
-						<td>${consulta.medico.especialidade.nome}</td>
-						<td>${consulta.medico.autor}</td>
-						<td>${consulta.medico.ano}</td>
+						<td>${consulta.medico.nome}</td>
+						<td>${consulta.medico.especialidade}</td>
+						<td>${consulta.medico.email}</td>
+						<td>${consulta.paciente.nome}</td>
 					</tr>
 				</c:forEach>
 			</table>

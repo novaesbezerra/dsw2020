@@ -44,16 +44,45 @@ public class ConsultaDAO extends GenericDAO {
         try {
         	Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-            
             statement.setLong(1, paciente.getId());
-            ResultSet resultSet = statement.executeQuery(); 
-            
+            ResultSet resultSet = statement.executeQuery();
+
             while (resultSet.next()) {
                 Long id = resultSet.getLong("id");
                 String data = resultSet.getString("data");
                 Float valor = resultSet.getFloat("valor");
                 Long medicoId = resultSet.getLong("medico_id");
-                Medico medico = new MedicoDAO().get(medicoId);            
+                Medico medico = new MedicoDAO().get(medicoId);
+                Consulta consulta = new Consulta(id, data, valor, medico, paciente);
+                listaConsultas.add(consulta);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaConsultas;
+    }
+
+    public List<Consulta> getConsultaMedicos(Medico medico) {
+        List<Consulta> listaConsultas = new ArrayList<>();
+
+        String sql = "SELECT * from Consulta c where c.medico_id = ? order by c.ID";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setLong(1, medico.getId());
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String data = resultSet.getString("data");
+                Float valor = resultSet.getFloat("valor");
+                Long pacienteId = resultSet.getLong("paciente_id");
+                Paciente paciente = new PacienteDAO().get(pacienteId);
                 Consulta consulta = new Consulta(id, data, valor, medico, paciente);
                 listaConsultas.add(consulta);
             }

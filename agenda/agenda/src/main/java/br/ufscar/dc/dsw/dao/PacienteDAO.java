@@ -131,6 +131,7 @@ public class PacienteDAO extends GenericDAO {
             statement.setLong(1, cpf);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                Long id = resultSet.getLong("id");
                 String nome = resultSet.getString("nome");
                 String sexo = resultSet.getString("sexo");
                 String senha = resultSet.getString("senha");
@@ -138,7 +139,7 @@ public class PacienteDAO extends GenericDAO {
                 String telefone = resultSet.getString("telefone");
                 String nascimento = resultSet.getString("nascimento");
 
-                paciente = new Paciente(nome, email, senha, cpf, telefone, sexo, nascimento);
+                paciente = new Paciente(id, nome, email, senha, cpf, telefone, sexo, nascimento);
             }
 
             resultSet.close();

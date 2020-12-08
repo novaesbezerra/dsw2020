@@ -71,7 +71,7 @@ public class IndexController extends HttpServlet {
 					if (medico.getsenha().equals(senha)) {
 						request.getSession().setAttribute("medicoLogado", medico);
 						//if (1) { /*/paciente.getId() != null*/ 
-							response.sendRedirect("medicos/");
+							response.sendRedirect("consultas/por_medico");
 						//} else {
 							//response.sendRedirect("consultas/");
 						//}

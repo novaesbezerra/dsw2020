@@ -11,27 +11,21 @@
 	</head>
 
 	<body>
-		<%
-			String contextPath = request.getContextPath().replace("/", "");
-		%>
+		<% String contextPath = request.getContextPath().replace("/", ""); %>
 		<div align="center">
 			<h1>
 				<fmt:message key="doctors.welcome" />
 			</h1>
 			<h2>
-				<a href="/<%=contextPath%>/especialidades">
-					<fmt:message key="specialties.entity" />
-				</a>
-				&nbsp;&nbsp;&nbsp;
-				<a href="/<%=contextPath%>/pacientes"> 
+				<a href="/<%=contextPath%>/pacientes">
 					<fmt:message key="users.entity" />
-				</a> 
+				</a>
 				&nbsp;&nbsp;&nbsp;
 			    <a href="${pageContext.request.contextPath}/logout.jsp">
 					<fmt:message key="exit.link" /></a>
 				<br/>
 				<br/>
-				<a href="lista"> 
+				<a href="lista">
 					<fmt:message key="doctors.list" />
 				</a>
 			</h2>

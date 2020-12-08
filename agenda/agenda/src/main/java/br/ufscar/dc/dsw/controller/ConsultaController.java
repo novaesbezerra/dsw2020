@@ -42,18 +42,21 @@ public class ConsultaController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Paciente paciente = (Paciente) request.getSession().getAttribute("pacienteLogado");
+        Medico medico = (Medico) request.getSession().getAttribute("medicoLogado");
 		Erro erros = new Erro();
 
-		if (paciente == null) {
+		if (paciente == null && medico == null) {
 			response.sendRedirect(request.getContextPath());
 			return;
-		} else if (paciente.getId().equals(0)) {
+		} else if (paciente != null && paciente.getId().equals(0)) {
 			erros.add("Acesso não autorizado!");
 			request.setAttribute("mensagens", erros);
 			RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
 			rd.forward(request, response);
 			return;
-		}
+		} else if (medico != null) {
+            System.out.println("Sou medico");
+        }
 
         String action = request.getPathInfo();
         if (action == null) {
@@ -68,8 +71,11 @@ public class ConsultaController extends HttpServlet {
                 case "/insercao":
                     insere(request, response);
                     break;
+                case "/por_medico":
+                    lista(request, response, "por_medico");
+                    break;
                 default:
-                    lista(request, response);
+                    lista(request, response, "por_paciente");
                     break;
             }
         } catch (RuntimeException | IOException | ServletException e) {
@@ -77,12 +83,20 @@ public class ConsultaController extends HttpServlet {
         }
     }
 
-    private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	Paciente paciente = (Paciente) request.getSession().getAttribute("pacienteLogado");
-        List<Consulta> listaConsultas = dao.getAll(paciente);
-        request.setAttribute("listaConsultas", listaConsultas);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/consulta/lista.jsp");
-        dispatcher.forward(request, response);
+    private void lista(HttpServletRequest request, HttpServletResponse response, String tipo) throws ServletException, IOException {
+        if (tipo == "por_medico"){
+            Medico medico = (Medico) request.getSession().getAttribute("medicoLogado");
+            List<Consulta> listaConsultas = dao.getConsultaMedicos(medico);
+            request.setAttribute("listaConsultas", listaConsultas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/consulta/lista.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            Paciente paciente = (Paciente) request.getSession().getAttribute("pacienteLogado");
+            List<Consulta> listaConsultas = dao.getAll(paciente);
+            request.setAttribute("listaConsultas", listaConsultas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/consulta/lista.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     private Map<Long, Medico> getMedicos() {

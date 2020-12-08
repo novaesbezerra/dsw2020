@@ -33,12 +33,16 @@
                     <td><input type="password" name="senha" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2"> 
-                        <input type="submit" name="bOK" value="<fmt:message key="user.login"/>">
+                    <td colspan="2">
+                        <input type="submit" name="bOK" value="<fmt:message key='user.login'/>">
                     </td>
                 </tr>
             </table>
         </form>
     </body>
+
+    <a href="${pageContext.request.contextPath}/medicos">
+        <fmt:message key="doctors.list_link" />
+    </a>
 </fmt:bundle>
 </html>

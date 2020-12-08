@@ -150,12 +150,13 @@ public class MedicoDAO extends GenericDAO {
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                Long id = resultSet.getLong("id");
                 Long crm = resultSet.getLong("crm");
                 String nome = resultSet.getString("nome");
                 String senha = resultSet.getString("senha");
                 String especialidade = resultSet.getString("especialidade");
 
-                medico = new Medico(crm, nome, senha, especialidade, email);
+                medico = new Medico(id, crm, nome, senha, especialidade, email);
             }
 
             resultSet.close();

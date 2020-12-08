@@ -65,4 +65,7 @@ insert into Consulta(data, valor, medico_id, paciente_id)
 	values ('30/11/2020', 188, 1, 2);
 
 insert into Consulta(data, valor, medico_id, paciente_id) 
+	values ('20/12/2020', 100, 1, 1);
+
+insert into Consulta(data, valor, medico_id, paciente_id) 
 	values ('27/11/2020', 200, 2, 2);
