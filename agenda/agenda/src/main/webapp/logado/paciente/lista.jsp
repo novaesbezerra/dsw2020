@@ -19,11 +19,7 @@
 				<fmt:message key="users.welcome" />
 			</h1>
 			<h2>
-			    <a href="/<%=contextPath%>/especialidades"> 
-			    	<fmt:message key="specialties.entity" />
-				</a> 
-				&nbsp;&nbsp;&nbsp;
-			    <a href="/<%=contextPath%>/medicos"> 
+			   	    <a href="/<%=contextPath%>/medicos"> 
 			    	<fmt:message key="doctors.entity" />
 				</a> 
 				&nbsp;&nbsp;&nbsp;
