@@ -8,21 +8,19 @@
 
 	<tr>
 		<th></th>
-		<th>Título</th>
+		<th>Nome</th>
 		<th>Especialidade</th>
-		<th>Autor</th>
-		<th>Ano</th>
-		<th>Preço</th>
+		<th>email</th>
+		<th>Crm</th>
 	</tr>
 	<c:forEach var="medico" items="${medicos}">
 		<tr>
 			<td style="width: 10%; text-align: center"><input type="radio"
 				id="${medico.key}" name="medico" value="${medico.key}" required></td>
-			<td>${medico.value.titulo}</td>
+			<td>${medico.value.nome}</td>
 			<td>${medico.value.especialidade}</td>
-			<td>${medico.value.autor}</td>
-			<td>${medico.value.ano}</td>
-			<td>${medico.value.preco}</td>
+			<td>${medico.value.email}</td>
+			<td>${medico.value.crm}</td>
 		</tr>
 	</c:forEach>
 </table>
