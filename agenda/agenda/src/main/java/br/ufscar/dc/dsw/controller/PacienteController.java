@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.dao.PacienteDAO;
+import br.ufscar.dc.dsw.dao.AdminDAO;
+import br.ufscar.dc.dsw.domain.Admin;
 //import br.ufscar.dc.dsw.domain.Long;
 import br.ufscar.dc.dsw.domain.Paciente;
 //import br.ufscar.dc.dsw.domain.String;
 import br.ufscar.dc.dsw.util.Erro;
 
-@WebServlet(urlPatterns = "/foo/*")
+@WebServlet(urlPatterns = "/pacientes/*")
 public class PacienteController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -38,13 +40,14 @@ public class PacienteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+    	Admin admin = (Admin) request.getSession().getAttribute("adminLogado");
 		Paciente paciente = (Paciente) request.getSession().getAttribute("pacienteLogado");
 		Erro erros = new Erro();
 
-		if (paciente == null) {
+		if (admin == null && paciente == null) {
 			response.sendRedirect(request.getContextPath());
 			return;
-		} else if (paciente.getId().equals(1000)) {  /////OLHAR ESSA PAGINA
+		} else if (paciente != null && paciente.getId().equals(0)) {  /////OLHAR ESSA PAGINA
 			erros.add("Acesso não autorizado!");
 			erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
 			request.setAttribute("mensagens", erros);
