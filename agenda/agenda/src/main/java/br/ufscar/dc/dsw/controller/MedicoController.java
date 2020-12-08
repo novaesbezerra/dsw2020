@@ -2,8 +2,10 @@ package br.ufscar.dc.dsw.controller;
 
 import br.ufscar.dc.dsw.dao.PacienteDAO;
 import br.ufscar.dc.dsw.dao.MedicoDAO;
+import br.ufscar.dc.dsw.dao.AdminDAO;
 import br.ufscar.dc.dsw.domain.Medico;
 import br.ufscar.dc.dsw.domain.Paciente;
+import br.ufscar.dc.dsw.domain.Admin;
 import br.ufscar.dc.dsw.util.Erro;
 
 import java.io.IOException;
@@ -37,7 +39,14 @@ public class MedicoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Medico medico = (Medico) request.getSession().getAttribute("medicoLogado");
+    	Admin admin = (Admin) request.getSession().getAttribute("adminLogado");
+
+    	if (admin == null) {
+    		response.sendRedirect(request.getContextPath());
+			return;
+    	}
+    	
+    	Medico medico = (Medico) request.getSession().getAttribute("medicoLogado");
 		Erro erros = new Erro();
 
 		if (medico == null) {

@@ -46,7 +46,7 @@ public class AdminController extends HttpServlet {
 		if (admin == null) {
 			response.sendRedirect(request.getContextPath());
 			return;
-		} else if (!admin.getLogin().equals("admin")) {  /////OLHAR ESSA PAGINA
+		} else if (!admin.getLogin().equals("admin")) { 
 			erros.add("Acesso não autorizado!");
 			erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
 			request.setAttribute("mensagens", erros);
@@ -89,7 +89,7 @@ public class AdminController extends HttpServlet {
 	private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Paciente> listaPacientes = dao.getAll();
 		request.setAttribute("listaPacientes", listaPacientes);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/paciente/lista.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/admin/lista.jsp");
 		dispatcher.forward(request, response);
 	}
 
