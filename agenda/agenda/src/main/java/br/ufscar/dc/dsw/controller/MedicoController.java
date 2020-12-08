@@ -40,22 +40,16 @@ public class MedicoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     	Admin admin = (Admin) request.getSession().getAttribute("adminLogado");
-
-    	if (admin == null) {
-    		response.sendRedirect(request.getContextPath());
-			return;
-    	}
-    	
     	Medico medico = (Medico) request.getSession().getAttribute("medicoLogado");
 		Erro erros = new Erro();
 
-		if (medico == null) {
+		if (admin == null && medico == null) {
 			response.sendRedirect(request.getContextPath());
 			return;
         } else if (medico != null){
             erros.add("Sou um medico logado");
             request.setAttribute("mensagens", erros);
-		} else if (!medico.getId().equals(1)) {
+		} else if (medico != null && medico.getId().equals(0)) {
 			erros.add("Acesso não autorizado!");
 			erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
 			request.setAttribute("mensagens", erros);
