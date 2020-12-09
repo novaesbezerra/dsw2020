@@ -47,7 +47,7 @@ public class PacienteController extends HttpServlet {
 		if (admin == null && paciente == null) {
 			response.sendRedirect(request.getContextPath());
 			return;
-		} else if (paciente != null && paciente.getId().equals(0)) {  /////OLHAR ESSA PAGINA
+		} else if (paciente != null && paciente.getId().equals(0)) {  
 			erros.add("Acesso não autorizado!");
 			erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
 			request.setAttribute("mensagens", erros);

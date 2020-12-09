@@ -42,7 +42,6 @@
 					<th><fmt:message key="user.email" /></th>
 					<th><fmt:message key="user.password" /></th>
 					<th><fmt:message key="user.name" /></th>
-					<th><fmt:message key="user.role" /></th>
 					<th><fmt:message key="actions.link" /></th>
 				</tr>
 				<c:forEach var="paciente" items="${requestScope.listaPacientes}">
