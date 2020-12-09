@@ -71,13 +71,13 @@ public class MedicoDAO extends GenericDAO {
     }
 
     public void delete(Medico medico) {
-        String sql = "DELETE FROM Medico where crm = ?";
+        String sql = "DELETE FROM Medico where id = ?";
 
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setLong(1, medico.getcrm());
+            statement.setLong(1, medico.getId());
             statement.executeUpdate();
 
             statement.close();

@@ -6,6 +6,7 @@ import br.ufscar.dc.dsw.dao.AdminDAO;
 import br.ufscar.dc.dsw.domain.Medico;
 import br.ufscar.dc.dsw.domain.Paciente;
 import br.ufscar.dc.dsw.domain.Admin;
+import br.ufscar.dc.dsw.domain.Livro;
 import br.ufscar.dc.dsw.util.Erro;
 
 import java.io.IOException;
@@ -142,7 +143,8 @@ public class MedicoController extends HttpServlet {
         response.sendRedirect("lista");
     }
 
-    private void remove(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void remove(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
         Long id = Long.parseLong(request.getParameter("id"));
 
         Medico medico = new Medico(id);
