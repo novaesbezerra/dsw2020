@@ -14,7 +14,7 @@ insert into Paciente(nome, email, senha, cpf, telefone, sexo, nascimento) values
 
 insert into Paciente(nome, email, senha, cpf, telefone, sexo, nascimento) values ('Juarez', 'juarez@gmail.com', '123456', '123.456.789-00', '', 'MASC', '01/06/1900');
 
-create table Consulta(id bigint not null auto_increment, data varchar(10) not null, valor float not null, medico_id bigint not null, paciente_id bigint not null, primary key (id), foreign key (medico_id) references Medico(id), foreign key (paciente_id) references Paciente(id));
+create table Consulta(id bigint not null auto_increment, data varchar(20) not null, valor float not null, medico_id bigint not null, paciente_id bigint not null, primary key (id), foreign key (medico_id) references Medico(id), foreign key (paciente_id) references Paciente(id));
 
 insert into Consulta(data, valor, medico_id, paciente_id) values ('30/11/2020', 188, 1, 2);
 

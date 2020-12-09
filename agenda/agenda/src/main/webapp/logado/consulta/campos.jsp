@@ -23,14 +23,25 @@
 			<td>${medico.value.crm}</td>
 		</tr>
 	</c:forEach>
-                <tr>
-		<td><label for="data"> <fmt:message key="consultation.date" />
-		</label></td>
-		<td><input type="text" id="data" name="data" size="45" required
-			value="${medico.value.data}" /></td>
-	</tr>
+                
 </table>
 <br/>
+<br/>
+<tr>
+		<td><label for="data"> <fmt:message key="consultation.date" />
+		</label></td>
+		<td><input type="date" id="data" name="data" size="45" required
+			value="" /></td>
+                <td><label for="hora"> <fmt:message key="consultation.hour" />
+		</label></td>
+		<td><input type="number" id="data" name="hora" step="1" min="0" max="24" required onkeydown="return false"
+			value="0" /></td>
+                <td><label for="minutos"> <fmt:message key="consultation.minute" />
+		</label></td>
+		<td><input type="number" id="data" name="minuto" step="30" min="0" max="30" required onkeydown="return false"
+			value="" /></td>
+	</tr>
+        <br/>
 <br/>
 
 <tr>

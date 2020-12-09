@@ -14,6 +14,7 @@ import br.ufscar.dc.dsw.domain.Paciente;
 public class ConsultaDAO extends GenericDAO {
 
     public void insert(Consulta consulta) {
+        System.out.println("Inserindo Consulta");
 
         String sql = "INSERT INTO Consulta (data, valor, medico_id, paciente_id) VALUES (?, ?, ?, ?)";
 
@@ -27,7 +28,6 @@ public class ConsultaDAO extends GenericDAO {
             statement.setLong(3, consulta.getIdMedico());
             statement.setLong(4, consulta.getIdPaciente());
             statement.executeUpdate();
-
             statement.close();
             conn.close();
         } catch (SQLException e) {

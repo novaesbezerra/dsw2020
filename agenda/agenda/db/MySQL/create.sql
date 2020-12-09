@@ -53,7 +53,7 @@ insert into Paciente(nome, email, senha, cpf, telefone, sexo, nascimento)
 
 create table Consulta(
 	id bigint not null auto_increment, 
-	data varchar(10) not null, 
+	data varchar(20) not null, 
 	valor float not null, 
 	medico_id bigint not null, 
 	paciente_id bigint not null, 

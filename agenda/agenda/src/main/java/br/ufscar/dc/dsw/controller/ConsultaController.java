@@ -125,6 +125,10 @@ public class ConsultaController extends HttpServlet {
         Long idPaciente = paciente.getId();
             
         String data = request.getParameter("data");
+        String hora = request.getParameter("hora");
+        String minuto = request.getParameter("minuto");
+        data = data + "/"+ hora + ":" + minuto;
+        System.out.println(data);
         //String data = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
         Consulta consulta = new Consulta(data, valor);
         consulta.setIdMedico(id);
