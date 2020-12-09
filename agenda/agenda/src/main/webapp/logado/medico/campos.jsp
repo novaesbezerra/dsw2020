@@ -25,13 +25,13 @@
 			required value="${medico.crm}" /></td>
 	</tr>
 	<tr>
-		<td><label for="nome"> <fmt:message key="doctor.nome" />
+		<td><label for="nome"> <fmt:message key="doctor.name" />
 		</label></td>
 		<td><input type="text" id="nome" name="nome" size="45" required
 			value="${medico.nome}" /></td>
 	</tr>
 	<tr>
-		<td><label for="especialidade"> <fmt:message key="doctor.especialidade" />
+		<td><label for="especialidade"> <fmt:message key="doctor.specialty" />
 		</label></td>
 		<td><input type="text" id="especialidade" name="especialidade" size="45" required
 			value="${medico.especialidade}" /></td>

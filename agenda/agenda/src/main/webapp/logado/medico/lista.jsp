@@ -18,8 +18,8 @@
 				<fmt:message key="doctors.welcome" />
 			</h1>
 			<h2>
-				<a href="/<%=contextPath%>/consultas/por_medico">
-					<fmt:message key="users.entity" />
+				<a href="/<%=contextPath%>/pacientes/"> 
+			    	<fmt:message key="pacients.entity" />
 				</a>
 				&nbsp;&nbsp;&nbsp;
 			    <a href="${pageContext.request.contextPath}/logout.jsp">
