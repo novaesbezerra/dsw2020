@@ -23,6 +23,12 @@
 			<td>${medico.value.crm}</td>
 		</tr>
 	</c:forEach>
+                <tr>
+		<td><label for="data"> <fmt:message key="consultation.date" />
+		</label></td>
+		<td><input type="text" id="data" name="data" size="45" required
+			value="${medico.value.data}" /></td>
+	</tr>
 </table>
 <br/>
 <br/>

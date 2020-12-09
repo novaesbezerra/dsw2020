@@ -6,7 +6,6 @@ import br.ufscar.dc.dsw.dao.AdminDAO;
 import br.ufscar.dc.dsw.domain.Medico;
 import br.ufscar.dc.dsw.domain.Paciente;
 import br.ufscar.dc.dsw.domain.Admin;
-import br.ufscar.dc.dsw.domain.Livro;
 import br.ufscar.dc.dsw.util.Erro;
 
 import java.io.IOException;

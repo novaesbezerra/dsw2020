@@ -110,18 +110,19 @@ public class MedicoDAO extends GenericDAO {
         }
     }
 
-    public Medico get(Long crm) {
+    public Medico get(Long id) {
         Medico medico = null;
 
-        String sql = "SELECT * from Medico m where m.crm = ?";
+        String sql = "SELECT * from Medico where id = ?";
 
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setLong(1, crm);
+            statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                Long crm = resultSet.getLong("crm");
                 String nome = resultSet.getString("nome");
                 String senha = resultSet.getString("senha");
                 String especialidade = resultSet.getString("especialidade");

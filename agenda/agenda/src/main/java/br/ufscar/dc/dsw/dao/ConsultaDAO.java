@@ -24,8 +24,8 @@ public class ConsultaDAO extends GenericDAO {
             statement = conn.prepareStatement(sql);
             statement.setString(1, consulta.getData());
             statement.setFloat(2, consulta.getValor());
-            statement.setLong(3, consulta.getMedico().getId());
-            statement.setLong(4, consulta.getPaciente().getId());
+            statement.setLong(3, consulta.getIdMedico());
+            statement.setLong(4, consulta.getIdPaciente());
             statement.executeUpdate();
 
             statement.close();

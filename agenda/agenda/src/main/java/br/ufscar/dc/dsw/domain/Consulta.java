@@ -7,6 +7,8 @@ public class Consulta {
 	private Float valor;
 	private Medico medico;
 	private Paciente paciente;
+        private Long medicoId;
+        private Long pacienteId;
 
 	public Consulta(Long id, String data, Float valor, Medico medico, Paciente paciente) {
 		this.id = id;
@@ -22,6 +24,11 @@ public class Consulta {
 		this.valor = valor;
 		this.medico = medico;
 		this.paciente = paciente;
+	}
+        public Consulta(String data, Float valor) {
+		super();
+		this.data = data;
+		this.valor = valor;
 	}
 
 	public Long getId() {
@@ -46,6 +53,22 @@ public class Consulta {
 
 	public void setValor(Float valor) {
 		this.valor = valor;
+	}
+        
+        public Long getIdMedico() {
+		return medicoId;
+	}
+
+	public void setIdMedico(Long medicoId) {
+		this.medicoId = medicoId;
+	}
+        
+        public Long getIdPaciente() {
+		return medicoId;
+	}
+
+	public void setIdPaciente(Long pacienteId) {
+		this.pacienteId = pacienteId;
 	}
 
 	public Medico getMedico() {

@@ -118,13 +118,17 @@ public class ConsultaController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         Long id = Long.parseLong(request.getParameter("medico"));
-        Float valor = Float.parseFloat(request.getParameter("valor"));
+        Float valor = Float.parseFloat("0");
 
         Medico medico = new MedicoDAO().get(id);
         Paciente paciente = (Paciente) request.getSession().getAttribute("pacienteLogado");
-
-        String data = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
-        Consulta consulta = new Consulta(data, valor, medico, paciente);
+        Long idPaciente = paciente.getId();
+            
+        String data = request.getParameter("data");
+        //String data = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+        Consulta consulta = new Consulta(data, valor);
+        consulta.setIdMedico(id);
+        consulta.setIdPaciente(idPaciente);
         dao.insert(consulta);
 
         response.sendRedirect("lista");

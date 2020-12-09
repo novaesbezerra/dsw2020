@@ -58,6 +58,7 @@ public class IndexController extends HttpServlet {
 				} else if (paciente != null) {
 					if (paciente.getSenha().equals(senha)) {
 						request.getSession().setAttribute("pacienteLogado", paciente);
+                                                request.getSession().setAttribute("pacienteIdLogado", paciente.getId());
 						//if (1) { /*/paciente.getId() != null*/ 
 							response.sendRedirect("consultas/");
 						//} else {
