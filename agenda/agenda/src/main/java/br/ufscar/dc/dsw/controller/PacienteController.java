@@ -130,7 +130,7 @@ public class PacienteController extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-		Long id = Long.parseLong(request.getParameter("id"));
+		//Long id = Long.parseLong(request.getParameter("id"));
 		Long cpf = Long.parseLong(request.getParameter("cpf"));
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
@@ -139,7 +139,7 @@ public class PacienteController extends HttpServlet {
 		String nascimento = request.getParameter("nascimento");
 		String senha = request.getParameter("senha");
 
-		Paciente paciente = new Paciente(id, nome, email, senha, cpf, telefone, sexo, nascimento);
+		Paciente paciente = new Paciente(nome, email, senha, cpf, telefone, sexo, nascimento);
 
 		dao.update(paciente);
 		response.sendRedirect("lista");

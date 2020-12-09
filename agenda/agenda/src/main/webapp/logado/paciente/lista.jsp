@@ -16,7 +16,7 @@
 		%>
 		<div align="center">
 			<h1>
-				<fmt:message key="users.welcome" />
+				<fmt:message key="patients.welcome" />
 			</h1>
 			<h2>
 			   	    <a href="/<%=contextPath%>/medicos"> 
@@ -42,6 +42,10 @@
 					<th><fmt:message key="user.email" /></th>
 					<th><fmt:message key="user.password" /></th>
 					<th><fmt:message key="user.name" /></th>
+					<th><fmt:message key="user.cpf" /></th>
+					<th><fmt:message key="user.telefone" /></th>
+					<th><fmt:message key="user.sexo" /></th>
+					<th><fmt:message key="user.nascimento" /></th>
 					<th><fmt:message key="actions.link" /></th>
 				</tr>
 				<c:forEach var="paciente" items="${requestScope.listaPacientes}">
@@ -50,6 +54,10 @@
 						<td><c:out value="${paciente.email}" /></td>
 						<td><c:out value="${paciente.senha}" /></td>
 						<td><c:out value="${paciente.nome}" /></td>
+						<td><c:out value="${paciente.cpf}" /></td>
+						<td><c:out value="${paciente.telefone}" /></td>
+						<td><c:out value="${paciente.sexo}" /></td>
+						<td><c:out value="${paciente.nascimento}" /></td>						
 			<%-- Comment --%>
 			<%-- <td><c:out value="${paciente.papel}" /></td> --%>
 						

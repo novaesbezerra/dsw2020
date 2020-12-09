@@ -36,14 +36,28 @@
 			value="<c:out value='${paciente.senha}' />" /></td>
 	</tr>
 	<tr>
-		<td><label for="papel"><fmt:message key="user.role" />
+		<td><label for="cpf"><fmt:message key="user.cpf" />
 		</label></td>
-		<td>
-			<select name="papel">
-				<option value="ADMIN" ${paciente.papel == "ADMIN" ? 'selected="selected"' : ''}>ADMIN</option>
-				<option value="USER" ${paciente.papel == "USER" ? 'selected="selected"' : ''}>USER</option>
-			</select>			
-		</td>
+		<td><input type="text" name="cpf" size="20" required
+			value="<c:out value='${paciente.senha}' />" /></td>
+	</tr>
+	<tr>
+		<td><label for="telefone"><fmt:message key="user.telefone" />
+		</label></td>
+		<td><input type="text" name="telefone" size="20" required
+			value="<c:out value='${paciente.senha}' />" /></td>
+	</tr>
+	<tr>
+		<td><label for="sexo"><fmt:message key="user.sexo" />
+		</label></td>
+		<td><input type="text" name="sexo" size="20" required
+			value="<c:out value='${paciente.senha}' />" /></td>
+	</tr>
+	<tr>
+		<td><label for="nascimento"><fmt:message key="user.nascimento" />
+		</label></td>
+		<td><input type="text" name="nascimento" size="20" required
+			value="<c:out value='${paciente.senha}' />" /></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center"><input type="submit"

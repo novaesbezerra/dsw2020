@@ -19,20 +19,19 @@ public class PacienteDAO extends GenericDAO {
 
     	//Paciente(nome, email, senha, cpf, telefone, sexo, nascimento)
     	
-        String sql = "INSERT INTO Paciente (id, nome, email, senha, cpf, telefone, sexo, nascimento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Paciente (nome, email, senha, cpf, telefone, sexo, nascimento) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);;
 
             statement = conn.prepareStatement(sql);
-            statement.setLong(1, paciente.getId());
-            statement.setString(2, paciente.getNome());
-            statement.setString(5, paciente.getEmail());
-            statement.setString(4, paciente.getSenha());
+            statement.setString(1, paciente.getNome());
+            statement.setString(2, paciente.getEmail());
+            statement.setString(3, paciente.getSenha());
             statement.setLong(4, paciente.getCpf());
-            statement.setString(6, paciente.getTelefone());
-            statement.setString(3, paciente.getSexo());
+            statement.setString(5, paciente.getTelefone());
+            statement.setString(6, paciente.getSexo());
             statement.setString(7, paciente.getNascimento());
 
             statement.executeUpdate();
@@ -48,7 +47,7 @@ public class PacienteDAO extends GenericDAO {
 
         List<Paciente> listaPacientes = new ArrayList<>();
 
-        String sql = "SELECT * from Paciente"; //p, Editora e where l.EDITORA_ID = e.ID order by l.id";
+        String sql = "SELECT * from Paciente";
 
         try {
             Connection conn = this.getConnection();
@@ -79,13 +78,13 @@ public class PacienteDAO extends GenericDAO {
     }
 
     public void delete(Paciente paciente) {
-        String sql = "DELETE FROM Paciente where cpf = ?";
+        String sql = "DELETE FROM Paciente where id = ?";
 
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setLong(1, paciente.getCpf());
+            statement.setLong(1, paciente.getId());
             statement.executeUpdate();
 
             statement.close();

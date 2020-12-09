@@ -16,7 +16,7 @@
 		%>
 		<div align="center">
 			<h1>
-				<fmt:message key="users.welcome" />
+				<fmt:message key="patients.welcome" />
 			</h1>
 			<h2>
 				<a href="/<%=contextPath%>/especialidades"> 
