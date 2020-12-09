@@ -18,7 +18,7 @@
 			</h1>
 			<h2>
 				<a href="/<%=contextPath%>/pacientes">
-					<fmt:message key="users.entity" />
+					<fmt:message key="patients.entity" />
 				</a>
 				&nbsp;&nbsp;&nbsp;
 			    <a href="${pageContext.request.contextPath}/logout.jsp">

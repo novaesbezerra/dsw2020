@@ -25,13 +25,13 @@
 			required value="${medico.crm}" /></td>
 	</tr>
 	<tr>
-		<td><label for="nome"> <fmt:message key="doctor.nome" />
+		<td><label for="nome"> <fmt:message key="doctor.name" />
 		</label></td>
 		<td><input type="text" id="nome" name="nome" size="45" required
 			value="${medico.nome}" /></td>
 	</tr>
 	<tr>
-		<td><label for="especialidade"> <fmt:message key="doctor.especialidade" />
+		<td><label for="especialidade"> <fmt:message key="doctor.speciality" />
 		</label></td>
 		<td><input type="text" id="especialidade" name="especialidade" size="45" required
 			value="${medico.especialidade}" /></td>
@@ -41,6 +41,12 @@
 		</label></td>
 		<td><input type="text" id="email" name="email" size="45" required
 			value="${medico.email}" /></td>
+	</tr>
+	<tr>
+		<td><label for="senha"> <fmt:message key="doctor.password" />
+		</label></td>
+		<td><input type="text" id="senha" name="senha" size="45" required
+			value="${medico.senha}" /></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center"><input type="submit"

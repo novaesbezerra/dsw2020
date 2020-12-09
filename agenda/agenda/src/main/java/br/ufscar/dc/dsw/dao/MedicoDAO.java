@@ -41,7 +41,7 @@ public class MedicoDAO extends GenericDAO {
 
         List<Medico> listaMedicos = new ArrayList<>();
 
-        String sql = "SELECT * from Medico"; //p, Editora e where l.EDITORA_ID = e.ID order by l.id";
+        String sql = "SELECT * from Medico"; 
 
         try {
             Connection conn = this.getConnection();
@@ -49,6 +49,7 @@ public class MedicoDAO extends GenericDAO {
 
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
+            	Long id = resultSet.getLong("id");
                 Long crm = resultSet.getLong("crm");
                 String nome = resultSet.getString("nome");
                 String senha = resultSet.getString("senha");
@@ -56,7 +57,7 @@ public class MedicoDAO extends GenericDAO {
                 String email = resultSet.getString("email");
 
                 //Editora editora = new Editora(editora_id, cnpj, nome);
-                Medico medico = new Medico(crm, nome, senha, especialidade, email);
+                Medico medico = new Medico(id, crm, nome, senha, especialidade, email);
                 listaMedicos.add(medico);
             }
 
