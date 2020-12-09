@@ -25,6 +25,7 @@
 			   	    <a href="/<%=contextPath%>/medicos/"> 
 			    	<fmt:message key="doctors.entity" />
 				</a> 
+                                &nbsp;&nbsp;&nbsp;
 				<a href="/<%=contextPath%>/pacientes/"> 
 			    	<fmt:message key="pacients.entity" />
 				</a> 
