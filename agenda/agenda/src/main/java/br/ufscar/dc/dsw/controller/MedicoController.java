@@ -39,28 +39,16 @@ public class MedicoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String action = request.getPathInfo();
+        if (action == null) {action = "";}
+
     	Admin admin = (Admin) request.getSession().getAttribute("adminLogado");
     	Medico medico = (Medico) request.getSession().getAttribute("medicoLogado");
 		Erro erros = new Erro();
 
-		if (admin == null && medico == null) {
+		if (admin == null && medico == null && action != "/lista_sem_login") {
 			response.sendRedirect(request.getContextPath());
 			return;
-        } else if (medico != null){
-            erros.add("Sou um medico logado");
-            request.setAttribute("mensagens", erros);
-		} else if (medico != null && medico.getId().equals(0)) {
-			erros.add("Acesso não autorizado!");
-			erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
-			request.setAttribute("mensagens", erros);
-			RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
-			rd.forward(request, response);
-			return;
-		}
-
-        String action = request.getPathInfo();
-        if (action == null) {
-            action = "";
         }
 
         try {

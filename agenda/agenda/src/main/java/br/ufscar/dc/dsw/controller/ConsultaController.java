@@ -123,7 +123,7 @@ public class ConsultaController extends HttpServlet {
         Medico medico = new MedicoDAO().get(id);
         Paciente paciente = (Paciente) request.getSession().getAttribute("pacienteLogado");
         Long idPaciente = paciente.getId();
-            
+
         String data = request.getParameter("data");
         String hora = request.getParameter("hora");
         String minuto = request.getParameter("minuto");

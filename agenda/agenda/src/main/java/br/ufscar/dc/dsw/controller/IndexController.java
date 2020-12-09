@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 import br.ufscar.dc.dsw.dao.AdminDAO;
 import br.ufscar.dc.dsw.dao.PacienteDAO;
@@ -22,7 +23,13 @@ import br.ufscar.dc.dsw.dao.PacienteDAO;
 @WebServlet(name = "Index", urlPatterns = { "/index.jsp", "/logout.jsp" })
 public class IndexController extends HttpServlet {
 
+	private MedicoDAO medico_dao;
 	private static final long serialVersionUID = 1L;
+
+    @Override
+    public void init() {
+        medico_dao = new MedicoDAO();
+    }
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -46,11 +53,7 @@ public class IndexController extends HttpServlet {
 				if(admin != null) {
 					if (admin.getSenha().equals(senha)) {
 						request.getSession().setAttribute("adminLogado", admin);
-						//if (1) { /*/paciente.getId() != null*/ 
-							response.sendRedirect("admin/");
-						//} else {
-							//response.sendRedirect("consultas/");
-						//}
+						response.sendRedirect("admin/");
 						return;
 					} else {
 						erros.add("Senha inválida!");
@@ -58,12 +61,8 @@ public class IndexController extends HttpServlet {
 				} else if (paciente != null) {
 					if (paciente.getSenha().equals(senha)) {
 						request.getSession().setAttribute("pacienteLogado", paciente);
-                                                request.getSession().setAttribute("pacienteIdLogado", paciente.getId());
-						//if (1) { /*/paciente.getId() != null*/ 
-							response.sendRedirect("consultas/");
-						//} else {
-							//response.sendRedirect("consultas/");
-						//}
+						request.getSession().setAttribute("pacienteIdLogado", paciente.getId());
+						response.sendRedirect("consultas/");
 						return;
 					} else {
 						erros.add("Senha inválida!");
@@ -71,11 +70,7 @@ public class IndexController extends HttpServlet {
 				} else if (medico != null) {
 					if (medico.getsenha().equals(senha)) {
 						request.getSession().setAttribute("medicoLogado", medico);
-						//if (1) { /*/paciente.getId() != null*/ 
-							response.sendRedirect("consultas/por_medico");
-						//} else {
-							//response.sendRedirect("consultas/");
-						//}
+						response.sendRedirect("consultas/por_medico");
 						return;
 					} else {
 						erros.add("Senha inválida!");
@@ -84,15 +79,29 @@ public class IndexController extends HttpServlet {
 					erros.add("Usuário não encontrado!");
 				}
 			}
+			request.getSession().invalidate();
+
+			request.setAttribute("mensagens", erros);
+
+			String URL = "/login.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(URL);
+			rd.forward(request, response);
+		} else if (request.getParameter("lista_sem_login") != null) {
+			lista(request, response);
+			return;
 		}
-		request.getSession().invalidate();
-
-		request.setAttribute("mensagens", erros);
-
 		String URL = "/login.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(URL);
 		rd.forward(request, response);
 	}
+
+
+    private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Medico> listaMedicos = medico_dao.getAll();
+        request.setAttribute("listaMedicos", listaMedicos);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/lista_medico_no_auth.jsp");
+        dispatcher.forward(request, response);
+    }
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <fmt:bundle basename="message">
+    <% String contextPath = request.getContextPath().replace("/", ""); %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><fmt:message key="page.title" /></title>
@@ -39,10 +40,11 @@
                 </tr>
             </table>
         </form>
+        <form method="post" action="index.jsp">
+            <input type="submit" name="lista_sem_login" value="<fmt:message key='list.without_login'/>">
+        </form>
     </body>
 
-    <a href="${pageContext.request.contextPath}/medicos">
-        <fmt:message key="doctors.list_link" />
-    </a>
+
 </fmt:bundle>
 </html>
