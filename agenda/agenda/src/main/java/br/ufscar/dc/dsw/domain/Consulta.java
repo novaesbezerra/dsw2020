@@ -64,7 +64,7 @@ public class Consulta {
 	}
         
         public Long getIdPaciente() {
-		return medicoId;
+		return pacienteId;
 	}
 
 	public void setIdPaciente(Long pacienteId) {
