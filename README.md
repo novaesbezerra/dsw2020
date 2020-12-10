@@ -4,12 +4,45 @@
 Documento de Requisitos - B
 Sistema para agendamento de consultas médicas
 
-Integrantes:
+## Integrantes
+
 726534 Gustavo Nakagawa
 
 619612 Jessica Antunes
 
 594954 Lucas Novaes
+
+
+## Roteiro de execução
+
+SGBD utilizado: MySql
+
+Nome do banco de dados: agenda
+
+Scripts sql para executar: create.sql (dentro da pasta agenda/db/MySql)
+
+## Usuários e papéis
+
+Admin
+
+> email: admin, senha: admin
+
+Médicos
+
+> email: 'jose_maria@gmail.com', senha: 123abc
+
+> email: 'ciniro@gmail.com', senha: 123abc
+
+> email: 'zagatti@gmail.com', senha: 123abc
+
+Pacientes
+
+> email: 'juraci@gmail.com', senha: 123456
+
+> email: 'juarez@gmail.com', senha: 123456
+
+
+## Requisitos
 
 O sistema deve possuir um cadastro de pacientes, com os seguintes dados: e-mail, senha, CPF, nome, telefone, sexo e data de nascimento.
 
@@ -21,19 +54,52 @@ O sistema deve atender aos seguintes requisitos:
 
 > R1: CRUD 1 de médicos (requer login de administrador)
 
+(X) Implementado
+
+Lucas (60%), Gustavo (10%) e Jéssica (30%)
+
 > R2: CRUD de pacientes (requer login de administrador)
+
+(X) Implementado
+
+Lucas (60%), Gustavo (10%) e Jéssica (30%)
 
 > R3: Listagem de todos os médicos em uma única página (não requer login)
 
+(X) Implementado
+
+Lucas (20%), Gustavo (10%) e Jéssica (70%)
+
 > R4: Listagem de todos os médicos por especialidade (não requer login)
+
+(X) Não Implementado
 
 > R5: Agendamento de consulta com um médico (requer login do paciente via email + senha). Depois de fazer login, o paciente pode cadastrar uma consulta. Para isso, deve escolher um médico (escolhendo a partir de uma lista), uma data/horário, e deve ser gravado a consulta na base de dados.
 
-> R6: Listagem de todas as consultas de um paciente (requer login do paciente via e-mail + senha). Depois de fazer login, o paciente pode visualizar todas as suas consultas gravadas. 
+(X) Implementado
+
+Lucas (15%), Gustavo (70%) e Jéssica (15%)
+
+> R6: Listagem de todas as consultas de um paciente (requer login do paciente via e-mail + senha). Depois de fazer login, o paciente pode visualizar todas as suas consultas gravadas.
+
+(X) Implementado
+
+Lucas (50%), Gustavo (20%) e Jéssica (30%)
 
 > R7: O sistema não deve permitir o cadastro de consultas de um mesmo médico ou de um mesmo paciente em uma mesma data/horário.
 
-> R8: Listagem de todas as consultas de um médico (requer login do médico via e-mail + senha). Depois de fazer login, o médico pode visualizar todas as suas consultas gravadas. 
+(X) Implementado
 
-> R9: O sistema deve ser internacionalizado em pelo menos dois idiomas: português + outro de sua escolha.
-O sistema deve tratar todos os erros possíveis (cadastros duplicados, problemas técnicos, etc) mostrando uma página de erros amigável ao usuário e registrando o erro no console, em arquivo ou na base de dados.
+Lucas (10%), Gustavo (80%) e Jéssica (10%)
+
+> R8: Listagem de todas as consultas de um médico (requer login do médico via e-mail + senha). Depois de fazer login, o médico pode visualizar todas as suas consultas gravadas.
+
+(X) Implementado
+
+Lucas (10%), Gustavo (10%) e Jéssica (80%)
+
+> R9: O sistema deve ser internacionalizado em pelo menos dois idiomas: português + outro de sua escolha. O sistema deve tratar todos os erros possíveis (cadastros duplicados, problemas técnicos, etc) mostrando uma página de erros amigável ao usuário e registrando o erro no console, em arquivo ou na base de dados.
+
+(X) Parcialmente Implementado
+
+Lucas (33%), Gustavo (33%) e Jéssica (33%)
