@@ -26,10 +26,10 @@ insert into Admin(login, senha)
 	values ('admin', 'admin');
 
 insert into Medico(crm, nome, senha, email, especialidade) 
-	values (12345678, 'José Maria', '123abc', 'jose_maria@gmail.com', 'Clinico Geral');
+	values (12345678, 'Jose Maria', '123abc', 'jose_maria@gmail.com', 'Clinico Geral');
 
 insert into Medico(crm, nome, senha, email, especialidade) 
-	values (87654321, 'João Ciniro', '123abc', 'ciniro@gmail.com', 'Ginecologista');
+	values (87654321, 'Joao Ciniro', '123abc', 'ciniro@gmail.com', 'Ginecologista');
 
 insert into Medico(crm, nome, senha, email, especialidade) 
 	values (98765432, 'Joaquim Zagatti', '123abc', 'zagatti@gmail.com', 'Cardiologista');
@@ -46,10 +46,10 @@ create table Paciente(
 	primary key (id));
 
 insert into Paciente(nome, email, senha, cpf, telefone, sexo, nascimento) 
-	values ('Juraci Carvalho', 'juraci@gmail.com', '123456', '12345678900', '', 'FEM', '01/05/1900');
+	values ('Juraci Carvalho', 'juraci@gmail.com', '123456', '12345678900', '12345-12345', 'FEM', '1900-12-01');
 
 insert into Paciente(nome, email, senha, cpf, telefone, sexo, nascimento) 
-	values ('Juarez', 'juarez@gmail.com', '123456', '12345678901', '', 'MASC', '01/06/1900');
+	values ('Juarez', 'juarez@gmail.com', '123456', '12345678901', '12345-12345', 'MASC', '1900-12-02');
 
 create table Consulta(
 	id bigint not null auto_increment, 
@@ -62,10 +62,10 @@ create table Consulta(
 	foreign key (paciente_id) references Paciente(id));
 
 insert into Consulta(data, valor, medico_id, paciente_id) 
-	values ('30/11/2020', 188, 1, 2);
+	values ('2020-12-01/1:30', 188, 1, 2);
 
 insert into Consulta(data, valor, medico_id, paciente_id) 
-	values ('20/12/2020', 100, 1, 1);
+	values ('2020-12-02/1:30', 100, 1, 1);
 
 insert into Consulta(data, valor, medico_id, paciente_id) 
-	values ('27/11/2020', 200, 2, 2);
+	values ('2020-12-01/2:30', 200, 2, 2);

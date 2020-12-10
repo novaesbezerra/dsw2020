@@ -56,7 +56,7 @@
 	<tr>
 		<td><label for="nascimento"><fmt:message key="user.nascimento" />
 		</label></td>
-		<td><input type="text" name="nascimento" size="20" required
+		<td><input type="date" name="nascimento" size="20" required
 			value="<c:out value='${paciente.senha}' />" /></td>
 	</tr>
 	<tr>

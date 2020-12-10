@@ -31,7 +31,7 @@
 			value="${medico.nome}" /></td>
 	</tr>
 	<tr>
-		<td><label for="especialidade"> <fmt:message key="doctor.speciality" />
+		<td><label for="especialidade"> <fmt:message key="doctor.specialty" />
 		</label></td>
 		<td><input type="text" id="especialidade" name="especialidade" size="45" required
 			value="${medico.especialidade}" /></td>

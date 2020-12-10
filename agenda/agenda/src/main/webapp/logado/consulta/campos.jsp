@@ -35,7 +35,7 @@
                 <td><label for="hora"> <fmt:message key="consultation.hour" />
 		</label></td>
 		<td><input type="number" id="data" name="hora" step="1" min="0" max="24" required onkeydown="return false"
-			value="0" /></td>
+			value="" /></td>
                 <td><label for="minutos"> <fmt:message key="consultation.minute" />
 		</label></td>
 		<td><input type="number" id="data" name="minuto" step="30" min="0" max="30" required onkeydown="return false"

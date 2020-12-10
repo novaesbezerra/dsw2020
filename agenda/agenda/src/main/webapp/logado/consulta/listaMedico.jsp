@@ -19,11 +19,7 @@
 			<h1>
 				<fmt:message key="consultations.welcome" />
 			</h1>
-			<h2>
-				<a href="/<%=contextPath%>/consultas/cadastro"> 
-					<fmt:message key="consultations.create" />
-				</a> 
-				&nbsp;&nbsp;&nbsp; 
+			<h2> 
 				<a href="${pageContext.request.contextPath}/logout.jsp"> 
 					<fmt:message key="exit.link" />
 				</a>

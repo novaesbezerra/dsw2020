@@ -21,6 +21,8 @@ import br.ufscar.dc.dsw.domain.Medico;
 import br.ufscar.dc.dsw.domain.Paciente;
 import br.ufscar.dc.dsw.util.Erro;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 
 @WebServlet(urlPatterns = "/consultas/*")
 public class ConsultaController extends HttpServlet {
@@ -89,7 +91,7 @@ public class ConsultaController extends HttpServlet {
             Medico medico = (Medico) request.getSession().getAttribute("medicoLogado");
             List<Consulta> listaConsultas = dao.getConsultaMedicos(medico);
             request.setAttribute("listaConsultas", listaConsultas);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/consulta/lista.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/consulta/listaMedico.jsp");
             dispatcher.forward(request, response);
         } else {
             Paciente paciente = (Paciente) request.getSession().getAttribute("pacienteLogado");
@@ -141,6 +143,7 @@ public class ConsultaController extends HttpServlet {
         }
         else{
             System.out.println("Erro");
+            //showMessageDialog(null, "Erro");
         }
         response.sendRedirect("lista");
         

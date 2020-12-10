@@ -118,19 +118,19 @@ public class PacienteDAO extends GenericDAO {
         }
     }
 
-    public Paciente get(Long cpf) {
+    public Paciente get(Long id) {
         Paciente paciente = null;
 
-        String sql = "SELECT * from Paciente p where p.cpf = ?";
+        String sql = "SELECT * from Paciente p where p.id = ?";
 
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setLong(1, cpf);
+            statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                Long id = resultSet.getLong("id");
+                Long cpf = resultSet.getLong("cpf");
                 String nome = resultSet.getString("nome");
                 String sexo = resultSet.getString("sexo");
                 String senha = resultSet.getString("senha");
