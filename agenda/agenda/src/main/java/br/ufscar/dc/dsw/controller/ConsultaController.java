@@ -21,6 +21,7 @@ import br.ufscar.dc.dsw.domain.Medico;
 import br.ufscar.dc.dsw.domain.Paciente;
 import br.ufscar.dc.dsw.util.Erro;
 
+
 @WebServlet(urlPatterns = "/consultas/*")
 public class ConsultaController extends HttpServlet {
 
@@ -133,8 +134,15 @@ public class ConsultaController extends HttpServlet {
         Consulta consulta = new Consulta(data, valor);
         consulta.setIdMedico(id);
         consulta.setIdPaciente(idPaciente);
-        dao.insert(consulta);
-
+        int duplicado = 0;
+        duplicado = dao.getDuplicatos(idPaciente, id, data);
+        if(duplicado == 0){
+            dao.insert(consulta);
+        }
+        else{
+            System.out.println("Erro");
+        }
         response.sendRedirect("lista");
+        
     }
 }

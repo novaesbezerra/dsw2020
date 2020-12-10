@@ -34,7 +34,7 @@ public class ConsultaDAO extends GenericDAO {
             throw new RuntimeException(e);
         }
     }
-
+    
     public List<Consulta> getAll(Paciente paciente) {
 
         List<Consulta> listaConsultas = new ArrayList<>();
@@ -64,6 +64,32 @@ public class ConsultaDAO extends GenericDAO {
             throw new RuntimeException(e);
         }
         return listaConsultas;
+    }
+
+    public int getDuplicatos(long idPaciente, long idMedico, String data) {
+        int count = 0;
+
+        String sql = "SELECT * from Consulta where (medico_id = ? OR paciente_id = ?) AND data = ?";
+
+        try {
+        	Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setLong(1, idMedico);
+            statement.setLong(2, idPaciente);
+            statement.setString(3, data);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                count ++;
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
     }
 
     public List<Consulta> getConsultaMedicos(Medico medico) {
