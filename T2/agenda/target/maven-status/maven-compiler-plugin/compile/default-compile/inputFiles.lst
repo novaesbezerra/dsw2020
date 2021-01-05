@@ -1,0 +1,17 @@
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/conversor/BigDecimalConversor.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/service/impl/EditoraService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/service/impl/LivroService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/controller/HomeController.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/controller/LivroController.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/conversor/EditoraConversor.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/LivrariaMvcApplication.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/service/spec/ILivroService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/dao/ILivroDAO.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/dao/IEditoraDAO.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/controller/ErrorViewController.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/config/MvcConfig.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/domain/Editora.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/domain/AbstractEntity.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/service/spec/IEditoraService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/domain/Livro.java
+/home/jessica/Área de Trabalho/ufscar/WEB/DSW1-master/Modulo08/LivrariaMVC-v1/src/main/java/br/ufscar/dc/dsw/controller/EditoraController.java
