@@ -24,10 +24,10 @@ public class Consulta extends AbstractEntity<Long> {
 	@Column(nullable = false, length = 30)
 	private String data;
 
-	@ManyToOne(mappedBy = "consulta")
+	@ManyToOne(mappedBy = "medico")
 	private List<Medico> medicos;
 
-	@ManyToOne(mappedBy = "consulta")
+	@ManyToOne(mappedBy = "paciente")
 	private List<Paciente> pacientes;
 
 	public String getHora() {

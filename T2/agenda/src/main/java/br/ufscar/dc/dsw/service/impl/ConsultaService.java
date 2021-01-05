@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.ufscar.dc.dsw.dao.ILivroDAO;
-import br.ufscar.dc.dsw.domain.Livro;
-import br.ufscar.dc.dsw.service.spec.ILivroService;
+import br.ufscar.dc.dsw.dao.ConsultaDAO;
+import br.ufscar.dc.dsw.domain.Consulta;
+import br.ufscar.dc.dsw.service.spec.IConsultaService;
 
 @Service
 @Transactional(readOnly = false)
-public class LivroService implements ILivroService {
+public class ConsultaService implements IConsultaService {
 
 	@Autowired
-	ILivroDAO dao;
-	
-	public void salvar(Livro livro) {
-		dao.save(livro);
+	ConsultaDAO dao;
+
+	public void salvar(Consulta consulta) {
+		dao.save(consulta);
 	}
 
 	public void excluir(Long id) {
@@ -26,12 +26,12 @@ public class LivroService implements ILivroService {
 	}
 
 	@Transactional(readOnly = true)
-	public Livro buscarPorId(Long id) {
+	public Consulta buscarPorId(Long id) {
 		return dao.findById(id.longValue());
 	}
 
 	@Transactional(readOnly = true)
-	public List<Livro> buscarTodos() {
+	public List<Consulta> buscarTodos() {
 		return dao.findAll();
 	}
 }
