@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -29,7 +29,7 @@ public class Paciente extends Usuario {
 	@Column(nullable = false, length = 12)
 	private String nascimento;
 
-	@ManyToMany(mappedBy = "paciente")
+	@OneToMany(mappedBy = "paciente")
 	private List<Consulta> consultas;
 
 	public String getCpf() {

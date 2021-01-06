@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -24,11 +25,13 @@ public class Consulta extends AbstractEntity<Long> {
 	@Column(nullable = false, length = 30)
 	private String data;
 
-	@ManyToOne(mappedBy = "medico")
-	private List<Medico> medicos;
+	@ManyToOne
+	@JoinColumn(name = "medico_id")
+	private Medico medico;
 
-	@ManyToOne(mappedBy = "paciente")
-	private List<Paciente> pacientes;
+	@ManyToOne
+	@JoinColumn(name = "paciente_id")
+	private Paciente paciente;
 
 	public String getHora() {
 		return hora;
@@ -46,20 +49,20 @@ public class Consulta extends AbstractEntity<Long> {
 		this.data = data;
 	}
 
-	public List<Medico> getMedicos() {
-		return medicos;
+	public Medico getMedico() {
+		return medico;
 	}
 
-	public void setMedicos(List<Medico> medicos) {
-		this.medicos = medicos;
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
 
-	public List<Paciente> getPacientes() {
-		return pacientes;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setPacientes(List<Paciente> pacientes) {
-		this.pacientes = pacientes;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 
