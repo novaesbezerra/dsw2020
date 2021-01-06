@@ -4,7 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 
-<title>Livraria Virtual</title>
+<title>Agenda</title>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -53,15 +53,15 @@
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	<script type="text/javascript">
 		var url = '';
-		
+
 		$('button[id*="btn_"]').click(function() {
 			url = "http://localhost:8080/" + $(this).attr('id').split("_")[1]
 		});
-		
+
 		$('#ok_confirm').click(function() {
 			document.location.href = url;
 		});
-		
+
 		$(function() {
 			$('[data-toggle="popover"]').popover();
 		});

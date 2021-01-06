@@ -9,8 +9,12 @@ import org.springframework.context.annotation.Bean;
 
 import br.ufscar.dc.dsw.dao.ConsultaDAO;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
+import br.ufscar.dc.dsw.dao.MedicoDAO;
+import br.ufscar.dc.dsw.dao.PacienteDAO;
 import br.ufscar.dc.dsw.domain.Consulta;
 import br.ufscar.dc.dsw.domain.Usuario;
+import br.ufscar.dc.dsw.domain.Medico;
+import br.ufscar.dc.dsw.domain.Paciente;
 
 @SpringBootApplication
 public class AgendaApplication {
@@ -20,26 +24,20 @@ public class AgendaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(ConsultaDAO consultaDAO, UsuarioDAO usuarioDAO) {
+	public CommandLineRunner demo(ConsultaDAO consultaDAO, UsuarioDAO usuarioDAO, MedicoDAO medicoDAO, PacienteDAO pacienteDAO) {
 		return (args) -> {
 
-			Usuario u1 = new Usuario();
-			u1.setNome("usuario1");
-			u1.setEmail("usuario1@gmail.com");
-			u1.setSenha("123456");
-			usuarioDAO.save(u1);
+			Medico m1 = new Medico("12345678", "Jose Maria", "123abc", "Clinico Geral", "jose_maria@gmail.com");
+			medicoDAO.save(m1);
+			Medico m2 = new Medico("87654321", "Joao Ciniro", "123abc", "Ginecologista", "ciniro@gmail.com");
+			medicoDAO.save(m2);
+			Medico m3 = new Medico("98765432", "Joaquim Zagatti", "123abc", "Cardiologista", "zagatti@gmail.com");
+			medicoDAO.save(m3);
 
-			Usuario u2 = new Usuario();
-			u2.setNome("usuario2");
-			u2.setEmail("usuario2@gmail.com");
-			u2.setSenha("123456");
-			usuarioDAO.save(u2);
-
-			Usuario u3 = new Usuario();
-			u3.setNome("usuario3");
-			u3.setEmail("usuario3@gmail.com");
-			u3.setSenha("123456");
-			usuarioDAO.save(u3);
+			Paciente p1 = new Paciente("Juraci Carvalho", "juraci@gmail.com", "123456", "12345678900", "12345-12345", "FEM", "1900-12-01");
+			pacienteDAO.save(p1);
+			Paciente p2 = new Paciente("Juarez", "juarez@gmail.com", "123456", "12345678901", "12345-12345", "MASC", "1900-12-02");
+			pacienteDAO.save(p2);
 
 			Consulta c1 = new Consulta();
 			c1.setHora("12h30");

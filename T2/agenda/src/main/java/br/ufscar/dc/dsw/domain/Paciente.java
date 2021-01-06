@@ -12,10 +12,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@SuppressWarnings("serial")
 @Entity
-@Table(name = "Paciente")
 public class Paciente extends Usuario {
+
+	private static final String ROLE_NAME = "PACIENTE";
 
 	@Column(nullable = false, unique = true, length = 12)
 	private String cpf;
@@ -31,6 +31,20 @@ public class Paciente extends Usuario {
 
 	@OneToMany(mappedBy = "paciente")
 	private List<Consulta> consultas;
+
+	public Paciente(String nome, String email, String senha, String cpf, String telefone, String sexo, String nascimento) {
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.sexo = sexo;
+		this.nascimento = nascimento;
+        setEmail(email);
+        setSenha(senha);
+        setNome(nome);
+	}
+
+    public Paciente() {
+        super(ROLE_NAME);
+    }
 
 	public String getCpf() {
 		return cpf;

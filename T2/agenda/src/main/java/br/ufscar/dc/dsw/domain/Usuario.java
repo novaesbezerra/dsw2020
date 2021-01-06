@@ -1,19 +1,15 @@
 package br.ufscar.dc.dsw.domain;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@SuppressWarnings("serial")
 @Entity
-@Table(name = "Usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends AbstractEntity<Long> {
 
 	@NotBlank(message = "{NotBlank.usuario.nome}")
@@ -30,6 +26,18 @@ public class Usuario extends AbstractEntity<Long> {
 	@Size(max = 100)
 	@Column(nullable = false, length = 100)
 	private String senha;
+
+    @NotBlank
+    @Column(nullable = false, length = 10)
+    private final String role;
+
+    protected Usuario() {
+        this.role = "USER";
+    };
+
+    protected Usuario(String role) {
+        this.role = role;
+    }
 
 	public String getNome() {
 		return nome;
