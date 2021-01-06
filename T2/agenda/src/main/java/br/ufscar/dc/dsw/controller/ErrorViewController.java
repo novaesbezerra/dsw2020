@@ -14,7 +14,7 @@ public class ErrorViewController implements ErrorViewResolver {
 
 	@Override
 	public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map<String, Object> map) {
-		
+
 		ModelAndView model = new ModelAndView("error");
 		model.addObject("status", status.value());
 		switch (status.value()) {
@@ -30,7 +30,7 @@ public class ErrorViewController implements ErrorViewResolver {
 					model.addObject("error", map.get("error"));
 					model.addObject("message", map.get("message"));
 					break;
-		}		
+		}
 		return model;
 	}
 
