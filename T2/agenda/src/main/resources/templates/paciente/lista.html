@@ -11,12 +11,12 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
 						<i class="oi oi-caret-right"></i>
-						<span>Lista de Editoras</span>
+						<span>Lista de Pacientes</span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/editoras/cadastrar}" role="button"> 
-					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
-					<span>Nova Editora</span>
+				<a class="btn btn-primary btn-md" th:href="@{/pacientes/cadastrar}" role="button">
+					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
+					<span>Novo Paciente</span>
 				</a>
 			</div>
 		</nav>
@@ -30,23 +30,30 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>CNPJ</th>
+							<th>CPF</th>
 							<th>Nome</th>
-							<th>Ação</th>
+							<th>Email</th>
+							<th>Telefone</th>
+							<th>Sexo</th>
+							<th>Nascimento</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="editora : ${editoras}">
-							<td th:text="${editora.id}"></td>
-							<td th:text="${editora.CNPJ}"></td>
-							<td th:text="${editora.nome}"></td>
+						<tr th:each="paciente : ${pacientes}">
+							<td th:text="${paciente.id}"></td>
+							<td th:text="${paciente.cpf}"></td>
+							<td th:text="${paciente.nome}"></td>
+							<td th:text="${paciente.email}"></td>
+							<td th:text="${paciente.telefone}"></td>
+							<td th:text="${paciente.sexo}"></td>
+							<td th:text="${paciente.nascimento}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" th:href="@{/editoras/editar/{id} (id=${editora.id}) }"
-									role="button"> 
+								<a class="btn btn-info btn-sm" th:href="@{/pacientes/editar/{id} (id=${paciente.id}) }"
+									role="button">
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"> </span>
 								</a>
 								<button
-									th:id="${'btn_editoras/excluir/' + editora.id}"
+									th:id="${'btn_pacientes/excluir/' + paciente.id}"
 									type="button" class="btn btn-danger btn-sm"
 									data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>

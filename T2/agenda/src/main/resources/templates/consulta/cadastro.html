@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Agendar consulta</span></li>
+				</ul>
+			</div>
+			<a class="btn btn-primary btn-md" th:href="@{/consultas/listar}"
+				role="button"> <span class="oi oi-spreadsheet" title="Cadastro"
+				aria-hidden="true"></span> <span>Listar consultas</span>
+			</a>
+		</nav>
+
+		<div class="container" id="cadastro">
+
+			<div th:replace="fragments/alert"></div>
+
+			<form
+				th:action="${consulta.id == null} ? @{/consultas/salvar} : @{/consultas/editar}"
+				th:object="${consulta}" method="POST">
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="data">Data</label>
+						<input type="number" class="form-control" id="data" placeholder="Data"
+							autofocus="autofocus" th:field="*{data}"
+							th:classappend="${#fields.hasErrors('data')} ? is-invalid" />
+						<div class="invalid-feedback">
+							<span th:errors="*{data}"></span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="hora">Hora</label>
+						<input type="number" class="form-control" id="hora" placeholder="Hora"
+							autofocus="autofocus" th:field="*{hora}"
+							th:classappend="${#fields.hasErrors('hora')} ? is-invalid" />
+						<div class="invalid-feedback">
+							<span th:errors="*{hora}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="medico">Medico</label>
+						<select id="medico" class="form-control" th:field="*{medico}"
+							th:classappend="${#fields.hasErrors('medico')} ? is-invalid">
+							<option value="">Selecione</option>
+							<option th:each="medico : ${editoras}" th:value="${medico.id}"
+								th:text="${medico.nome}"></option>
+						</select>
+
+						<div class="invalid-feedback">
+							<span th:errors="*{medico}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="paciente">Paciente</label>
+						<select id="paciente" class="form-control" th:field="*{paciente}"
+							th:classappend="${#fields.hasErrors('paciente')} ? is-invalid">
+							<option value="">Selecione</option>
+							<option th:each="paciente : ${editoras}" th:value="${paciente.id}"
+								th:text="${paciente.nome}"></option>
+						</select>
+
+						<div class="invalid-feedback">
+							<span th:errors="*{paciente}"></span>
+						</div>
+					</div>
+
+				</div>
+				<input type="hidden" id="id" th:field="*{id}" />
+				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
