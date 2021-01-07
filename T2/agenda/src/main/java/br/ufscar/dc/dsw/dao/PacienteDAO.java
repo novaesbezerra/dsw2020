@@ -11,7 +11,7 @@ public interface PacienteDAO extends CrudRepository<Paciente, Long> {
 
     List<Paciente> findAll();
 
-    Optional<Paciente> findById(Long id);
+    Paciente findByCpf(String cpf);
 
-    void deleteById(Long id);
+    void deleteByCpf(String cpf);
 }
