@@ -11,11 +11,11 @@ br/ufscar/dc/dsw/domain/Paciente.class
 br/ufscar/dc/dsw/domain/Medico.class
 br/ufscar/dc/dsw/domain/Usuario.class
 br/ufscar/dc/dsw/config/MvcConfig.class
-br/ufscar/dc/dsw/domain/Consulta.class
 br/ufscar/dc/dsw/conversor/BigDecimalConversor.class
+br/ufscar/dc/dsw/domain/Consulta.class
 br/ufscar/dc/dsw/service/impl/UsuarioService.class
-br/ufscar/dc/dsw/domain/AbstractEntity.class
 br/ufscar/dc/dsw/conversor/ConsultaConversor.class
+br/ufscar/dc/dsw/domain/AbstractEntity.class
 br/ufscar/dc/dsw/controller/ErrorViewController.class
 br/ufscar/dc/dsw/service/spec/IConsultaService.class
 br/ufscar/dc/dsw/dao/PacienteDAO.class
