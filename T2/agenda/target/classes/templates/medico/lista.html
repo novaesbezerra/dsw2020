@@ -44,12 +44,12 @@
 							<td th:text="${medico.email}"></td>
 							<td th:text="${medico.especialidade}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" th:href="@{/medicos/editar/{id} (id=${medico.id}) }"
+								<a class="btn btn-info btn-sm" th:href="@{/medicos/editar/{crm} (crm=${medico.crm}) }"
 									role="button"> 
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"> </span>
 								</a>
 								<button
-									th:id="${'btn_medicos/excluir/' + medico.id}"
+									th:id="${'btn_medicos/excluir/' + medico.crm}"
 									type="button" class="btn btn-danger btn-sm"
 									data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
