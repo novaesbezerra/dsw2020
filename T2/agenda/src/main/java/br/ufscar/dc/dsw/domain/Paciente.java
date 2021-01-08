@@ -17,8 +17,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 public class Paciente extends Usuario {
 
-	private static final String ROLE_NAME = "PACIENTE";
-
 	@Column(nullable = false, unique = true, length = 16)
 	private String cpf;
 
@@ -36,6 +34,7 @@ public class Paciente extends Usuario {
 	private List<Consulta> consultas;
 
 	public Paciente(String nome, String email, String senha, String cpf, String telefone, String sexo, String nascimento) {
+		super("PACIENTE");
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.sexo = sexo;
@@ -46,7 +45,7 @@ public class Paciente extends Usuario {
 	}
 
     public Paciente() {
-        super(ROLE_NAME);
+        super("PACIENTE");
     }
 
 	public String getCpf() {

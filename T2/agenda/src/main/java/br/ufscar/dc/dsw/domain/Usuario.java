@@ -28,16 +28,20 @@ public class Usuario extends AbstractEntity<Long> {
 	private String senha;
 
     @NotBlank
-    @Column(nullable = false, length = 10)
-    private final String role;
+    @Column(nullable = false, length = 45)
+    private String role;
 
-    protected Usuario() {
-        this.role = "USER";
-    };
+    public Usuario() {
+    	this.role = "USER";
+    }
 
-    protected Usuario(String role) {
+    public Usuario(String role) {
         this.role = role;
     }
+
+	public String getRole() {
+		return role;
+	}
 
 	public String getNome() {
 		return nome;

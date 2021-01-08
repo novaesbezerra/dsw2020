@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.ufscar.dc.dsw.dao.ConsultaDAO;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
@@ -24,19 +25,24 @@ public class AgendaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(ConsultaDAO consultaDAO, UsuarioDAO usuarioDAO, MedicoDAO medicoDAO, PacienteDAO pacienteDAO) {
+	public CommandLineRunner demo(ConsultaDAO consultaDAO, UsuarioDAO usuarioDAO, MedicoDAO medicoDAO, PacienteDAO pacienteDAO, BCryptPasswordEncoder encoder) {
 		return (args) -> {
 
 			Medico m1 = new Medico("12345678", "Jose Maria", "123abc", "Clinico Geral", "jose_maria@gmail.com");
+			m1.setSenha(encoder.encode("123abc"));
 			medicoDAO.save(m1);
 			Medico m2 = new Medico("87654321", "Joao Ciniro", "123abc", "Ginecologista", "ciniro@gmail.com");
+			m2.setSenha(encoder.encode("123abc"));
 			medicoDAO.save(m2);
 			Medico m3 = new Medico("98765432", "Joaquim Zagatti", "123abc", "Cardiologista", "zagatti@gmail.com");
+			m3.setSenha(encoder.encode("123abc"));
 			medicoDAO.save(m3);
 
 			Paciente p1 = new Paciente("Juraci Carvalho", "juraci@gmail.com", "123456", "12345678900", "12345-12345", "FEM", "1900-12-01");
+			p1.setSenha(encoder.encode("123456"));
 			pacienteDAO.save(p1);
 			Paciente p2 = new Paciente("Juarez", "juarez@gmail.com", "123456", "12345678901", "12345-12345", "MASC", "1900-12-02");
+			p2.setSenha(encoder.encode("123456"));
 			pacienteDAO.save(p2);
 
 			Consulta c1 = new Consulta();

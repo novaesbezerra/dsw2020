@@ -1,29 +1,32 @@
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/conversor/ConsultaConversor.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/AbstractEntity.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/spec/IPacienteService.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/conversor/MedicoConversor.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/conversor/PacienteConversor.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/AgendaApplication.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/ErrorViewController.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/dao/MedicoDAO.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/impl/ConsultaService.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/config/MvcConfig.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/dao/UsuarioDAO.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/PacienteController.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/spec/IUsuarioService.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/spec/IMedicoService.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/ConsultaController.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/impl/MedicoService.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/MedicoController.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/spec/IConsultaService.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/impl/UsuarioService.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/Medico.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/Paciente.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/impl/PacienteService.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/dao/ConsultaDAO.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/dao/PacienteDAO.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/conversor/BigDecimalConversor.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/HomeController.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/Consulta.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/UsuarioController.java
-/Users/lucasnovaes/Desktop/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/Usuario.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/config/WebSecurityConfig.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/conversor/BigDecimalConversor.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/PacienteController.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/conversor/ConsultaConversor.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/Usuario.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/dao/MedicoDAO.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/ConsultaController.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/UsuarioController.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/conversor/PacienteConversor.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/spec/IPacienteService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/Consulta.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/impl/MedicoService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/security/UsuarioDetailsServiceImpl.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/dao/PacienteDAO.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/security/UsuarioDetails.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/impl/UsuarioService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/dao/ConsultaDAO.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/Medico.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/Paciente.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/spec/IMedicoService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/MedicoController.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/conversor/MedicoConversor.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/impl/ConsultaService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/ErrorViewController.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/AgendaApplication.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/controller/HomeController.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/impl/PacienteService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/spec/IUsuarioService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/service/spec/IConsultaService.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/dao/UsuarioDAO.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/domain/AbstractEntity.java
+/home/jessica/Área de Trabalho/ufscar/WEB/dsw2020/T2/agenda/src/main/java/br/ufscar/dc/dsw/config/MvcConfig.java
