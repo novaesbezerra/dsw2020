@@ -31,18 +31,20 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="data">Data</label>
-						<input type="number" class="form-control" id="data" placeholder="Data"
+						<input type="text" class="form-control" id="data" placeholder="dd/mm/aa"
 							autofocus="autofocus" th:field="*{data}"
-							th:classappend="${#fields.hasErrors('data')} ? is-invalid" />
+							th:classappend="${#fields.hasErrors('data')} ? is-invalid" 
+							data-mask="00/00/00" data-mask-reverse="true" />
 						<div class="invalid-feedback">
 							<span th:errors="*{data}"></span>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="hora">Hora</label>
-						<input type="number" class="form-control" id="hora" placeholder="Hora"
+						<input type="text" class="form-control" id="hora" placeholder="hh mm"
 							autofocus="autofocus" th:field="*{hora}"
-							th:classappend="${#fields.hasErrors('hora')} ? is-invalid" />
+							th:classappend="${#fields.hasErrors('hora')} ? is-invalid" 
+							data-mask="00h00" data-mask-reverse="true"/>
 						<div class="invalid-feedback">
 							<span th:errors="*{hora}"></span>
 						</div>
@@ -53,7 +55,7 @@
 						<select id="medico" class="form-control" th:field="*{medico}"
 							th:classappend="${#fields.hasErrors('medico')} ? is-invalid">
 							<option value="">Selecione</option>
-							<option th:each="medico : ${editoras}" th:value="${medico.id}"
+							<option th:each="medico : ${medicos}" th:value="${medico.crm}"
 								th:text="${medico.nome}"></option>
 						</select>
 
@@ -67,7 +69,7 @@
 						<select id="paciente" class="form-control" th:field="*{paciente}"
 							th:classappend="${#fields.hasErrors('paciente')} ? is-invalid">
 							<option value="">Selecione</option>
-							<option th:each="paciente : ${editoras}" th:value="${paciente.id}"
+							<option th:each="paciente : ${pacientes}" th:value="${paciente.cpf}"
 								th:text="${paciente.nome}"></option>
 						</select>
 

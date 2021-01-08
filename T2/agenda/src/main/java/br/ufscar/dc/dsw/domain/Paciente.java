@@ -17,7 +17,7 @@ public class Paciente extends Usuario {
 
 	private static final String ROLE_NAME = "PACIENTE";
 
-	@Column(nullable = false, unique = true, length = 12)
+	@Column(nullable = false, unique = true, length = 16)
 	private String cpf;
 
 	@Column(nullable = true, length = 20)
