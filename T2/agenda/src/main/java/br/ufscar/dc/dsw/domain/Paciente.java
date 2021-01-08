@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Paciente extends Usuario {
@@ -30,6 +32,7 @@ public class Paciente extends Usuario {
 	private String nascimento;
 
 	@OneToMany(mappedBy = "paciente")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Consulta> consultas;
 
 	public Paciente(String nome, String email, String senha, String cpf, String telefone, String sexo, String nascimento) {
