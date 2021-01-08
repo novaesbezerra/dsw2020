@@ -23,10 +23,6 @@ Scripts sql para executar: create.sql (dentro da pasta agenda/db/MySql)
 
 ## Usuários e papéis
 
-Admin
-
-> email: admin, senha: admin
-
 Médicos
 
 > email: 'jose_maria@gmail.com', senha: 123abc
@@ -56,19 +52,19 @@ O sistema deve atender aos seguintes requisitos:
 
 (X) Implementado
 
-Lucas (60%), Gustavo (10%) e Jéssica (30%)
+Lucas (50%), Jéssica (50%)
 
 > R2: CRUD de pacientes (requer login de administrador)
 
 (X) Implementado
 
-Lucas (60%), Gustavo (10%) e Jéssica (30%)
+Lucas (50%), Jéssica (50%)
 
 > R3: Listagem de todos os médicos em uma única página (não requer login)
 
-(X) Implementado
+(X) Parcialmente Implementado
 
-Lucas (20%), Gustavo (10%) e Jéssica (70%)
+Lucas (50%), Jéssica (50%)
 
 > R4: Listagem de todos os médicos por especialidade (não requer login)
 
@@ -78,28 +74,28 @@ Lucas (20%), Gustavo (10%) e Jéssica (70%)
 
 (X) Implementado
 
-Lucas (15%), Gustavo (70%) e Jéssica (15%)
+Lucas (50%), Jéssica (50%)
 
 > R6: Listagem de todas as consultas de um paciente (requer login do paciente via e-mail + senha). Depois de fazer login, o paciente pode visualizar todas as suas consultas gravadas.
 
 (X) Implementado
 
-Lucas (50%), Gustavo (20%) e Jéssica (30%)
+Lucas (50%), Jéssica (50%)
 
 > R7: O sistema não deve permitir o cadastro de consultas de um mesmo médico ou de um mesmo paciente em uma mesma data/horário.
 
-(X) Implementado
+(X) Parcialmente Implementado
 
-Lucas (10%), Gustavo (80%) e Jéssica (10%)
+Lucas (50%), Jéssica (50%)
 
 > R8: Listagem de todas as consultas de um médico (requer login do médico via e-mail + senha). Depois de fazer login, o médico pode visualizar todas as suas consultas gravadas.
 
 (X) Implementado
 
-Lucas (10%), Gustavo (10%) e Jéssica (80%)
+Lucas (50%), Jéssica (50%)
 
 > R9: O sistema deve ser internacionalizado em pelo menos dois idiomas: português + outro de sua escolha. O sistema deve tratar todos os erros possíveis (cadastros duplicados, problemas técnicos, etc) mostrando uma página de erros amigável ao usuário e registrando o erro no console, em arquivo ou na base de dados.
 
 (X) Parcialmente Implementado
 
-Lucas (33%), Gustavo (33%) e Jéssica (33%)
+Lucas (50%), Jéssica (50%)
