@@ -10,6 +10,7 @@
 					class="oi oi-home"></i> <span>Home</span>
 			</a></li>
 		</ul>
+<div th:if="${#authorization.expression('isAuthenticated()')}">
 
 		<ul class="nav nav-pills">
 			<li class="nav-item"><span class="nav-link active"
@@ -23,36 +24,41 @@
 					<span th:text="#{sidebar.link.listar}"></span>
 			</a></li>
 		</ul>
-
+</div>
 		<ul class="nav nav-pills">
 
 			<li class="nav-item"><span class="nav-link active"
 				th:text="#{sidebar.titulo.medicos}">Medicos</span></li>
-			<li class="nav-item"><a class="nav-link"
+				<div th:if="${#authorization.expression('isAuthenticated()')}">
+				<li class="nav-item"><a class="nav-link"
 				th:href="@{/medicos/cadastrar}"> <i class="oi oi-plus"></i> <span
 					th:text="#{sidebar.link.cadastrar}"></span>
 			</a></li>
+			</div>
 			<li class="nav-item"><a class="nav-link"
 				th:href="@{/medicos/listar}"> <i class="oi oi-spreadsheet"></i>
 					<span th:text="#{sidebar.link.listar}"></span>
 			</a></li>
-
 		</ul>
-
+		<div sec:authorize="hasRole('ADMIN')">
 		<ul class="nav nav-pills">
-
-			<li class="nav-item"><span class="nav-link active"
-				th:text="#{sidebar.titulo.pacientes}">Pacientes</span></li>
-			<li class="nav-item"><a class="nav-link"
-				th:href="@{/pacientes/cadastrar}"> <i class="oi oi-plus"></i> <span
-					th:text="#{sidebar.link.cadastrar}"></span>
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				th:href="@{/pacientes/listar}"> <i class="oi oi-spreadsheet"></i>
+			<li class="nav-item">
+				<span class="nav-link active" th:text="#{sidebar.titulo.pacientes}">Pacientes</span>
+			</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/pacientes/cadastrar}"> 
+					<i class="oi oi-plus"></i> 
+					<span th:text="#{sidebar.link.cadastrar}"></span>
+					</a>
+				</li>
+			<li class="nav-item">
+				<a class="nav-link"	th:href="@{/pacientes/listar}"> 
+					<i class="oi oi-spreadsheet"></i>
 					<span th:text="#{sidebar.link.listar}"></span>
-			</a></li>
-
+				</a>
+			</li>
 		</ul>
+		</div>
 	</nav>
 </body>
 </html>

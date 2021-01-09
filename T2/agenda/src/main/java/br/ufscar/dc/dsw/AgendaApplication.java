@@ -28,6 +28,10 @@ public class AgendaApplication {
 	public CommandLineRunner demo(ConsultaDAO consultaDAO, UsuarioDAO usuarioDAO, MedicoDAO medicoDAO, PacienteDAO pacienteDAO, BCryptPasswordEncoder encoder) {
 		return (args) -> {
 
+			Usuario u1 = new Usuario("ADMIN", "admin", "admin", "admin");
+			u1.setSenha(encoder.encode("admin"));
+			usuarioDAO.save(u1);
+			
 			Medico m1 = new Medico("12345678", "Jose Maria", "123abc", "Clinico Geral", "jose_maria@gmail.com");
 			m1.setSenha(encoder.encode("123abc"));
 			medicoDAO.save(m1);

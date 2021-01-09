@@ -35,8 +35,15 @@ public class Usuario extends AbstractEntity<Long> {
     	this.role = "USER";
     }
 
-    public Usuario(String role) {
+    public Usuario(String role, String email, String senha, String nome) {
+    	this.nome = nome;
         this.role = role;
+        this.email = email;
+        this.senha = senha;
+    }
+    
+    public Usuario(String role) {
+    	this.role = role;
     }
 
 	public String getRole() {

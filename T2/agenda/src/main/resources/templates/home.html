@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html layout:decorate="~{fragments/layout}">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	layout:decorate="~{fragments/layout}">
 <head>
 <meta charset="UTF-8" />
 </head>
 <body>
-	<section class="layout-content" layout:fragment="corpo">
-
+	<section class="layout-content" layout:fragment="corpo" style="text-align: center;">
+		<p><p>
+	<div th:if="${#authorization.expression('isAuthenticated()')}">
+		
+		<h1>
+			<span th:text="#{home.hello}"></span>
+			<span th:inline="text">[[${#httpServletRequest.remoteUser}]]!</span>
+		</h1>
+	</div>
 		<div class="container" style="text-align: center;">
 			<h1 th:text="#{title.welcome}">Boas Vindas</h1>
 			<p></p>
