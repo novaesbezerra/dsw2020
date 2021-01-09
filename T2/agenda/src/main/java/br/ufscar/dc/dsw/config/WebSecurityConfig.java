@@ -48,12 +48,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/medico/**").hasRole("MEDICO")
 				.antMatchers("/paciente/**").hasRole("PACIENTE")
 				.anyRequest().authenticated()
-			.and()
-				.formLogin()
+				.and()
+			.formLogin()
 				.loginPage("/login")
 				.permitAll()
-			.and()
-				.logout()
+				.and()
+			.logout()
 				.logoutSuccessUrl("/")
 				.permitAll();
 	}
