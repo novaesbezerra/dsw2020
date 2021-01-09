@@ -23,7 +23,8 @@
 		<h2 th:text="${error}"></h2>
 		<div>
 			<span th:text="${message}"></span><br/><br/>
-			<a class="btn btn-primary" type="button" href="javascript:history.back()">Voltar a página anterior</a>
+			<a class="btn btn-primary" type="button"
+				href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
 		</div>
 	</div>
 </body>

@@ -6,8 +6,8 @@ br/ufscar/dc/dsw/dao/ConsultaDAO.class
 br/ufscar/dc/dsw/service/impl/PacienteService.class
 br/ufscar/dc/dsw/service/spec/IMedicoService.class
 br/ufscar/dc/dsw/service/spec/IPacienteService.class
-br/ufscar/dc/dsw/security/UsuarioDetailsServiceImpl.class
 br/ufscar/dc/dsw/domain/Medico.class
+br/ufscar/dc/dsw/security/UsuarioDetailsServiceImpl.class
 br/ufscar/dc/dsw/domain/Consulta.class
 br/ufscar/dc/dsw/domain/AbstractEntity.class
 br/ufscar/dc/dsw/controller/ErrorViewController.class
@@ -18,8 +18,8 @@ br/ufscar/dc/dsw/dao/MedicoDAO.class
 br/ufscar/dc/dsw/controller/HomeController.class
 br/ufscar/dc/dsw/controller/UsuarioController.class
 br/ufscar/dc/dsw/dao/UsuarioDAO.class
-br/ufscar/dc/dsw/security/UsuarioDetails.class
 br/ufscar/dc/dsw/domain/Paciente.class
+br/ufscar/dc/dsw/security/UsuarioDetails.class
 br/ufscar/dc/dsw/domain/Usuario.class
 br/ufscar/dc/dsw/config/MvcConfig.class
 br/ufscar/dc/dsw/conversor/BigDecimalConversor.class
