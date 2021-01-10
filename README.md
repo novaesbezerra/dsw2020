@@ -66,13 +66,13 @@ Lucas (50%), Jéssica (50%)
 
 > R3: Listagem de todos os médicos em uma única página (não requer login)
 
-(X) Parcialmente Implementado
+(X) Implementado
 
 Lucas (50%), Jéssica (50%)
 
 > R4: Listagem de todos os médicos por especialidade (não requer login)
 
-(X) Não Implementado
+(X) Parcialmente Implementado
 
 > R5: Agendamento de consulta com um médico (requer login do paciente via email + senha). Depois de fazer login, o paciente pode cadastrar uma consulta. Para isso, deve escolher um médico (escolhendo a partir de uma lista), uma data/horário, e deve ser gravado a consulta na base de dados.
 
@@ -82,7 +82,7 @@ Lucas (50%), Jéssica (50%)
 
 > R6: Listagem de todas as consultas de um paciente (requer login do paciente via e-mail + senha). Depois de fazer login, o paciente pode visualizar todas as suas consultas gravadas.
 
-(X) Implementado
+(X) Parcialmente Implementado
 
 Lucas (50%), Jéssica (50%)
 
@@ -94,7 +94,7 @@ Lucas (50%), Jéssica (50%)
 
 > R8: Listagem de todas as consultas de um médico (requer login do médico via e-mail + senha). Depois de fazer login, o médico pode visualizar todas as suas consultas gravadas.
 
-(X) Implementado
+(X) Parcialmente Implementado
 
 Lucas (50%), Jéssica (50%)
 
