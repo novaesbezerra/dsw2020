@@ -23,6 +23,10 @@ Scripts sql para executar: create.sql (dentro da pasta agenda/db/MySql)
 
 ## Usuários e papéis
 
+Admin
+
+> email: 'admin', senha: admin
+
 Médicos
 
 > email: 'jose_maria@gmail.com', senha: 123abc
