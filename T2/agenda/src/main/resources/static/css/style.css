@@ -105,6 +105,17 @@ div.login-botao{
     width: 300px;
 }
 
+/* NAVBAR */
+
+div.bandeiras {
+	display: inline-block;
+	right: 10px; 
+	position: relative;
+}
+a.icon-bandeiras {
+	width: 30%;
+	height: auto;
+}
 .navbar {
 	color: #fff;
 }
@@ -129,19 +140,8 @@ div.login-botao{
 /*
  * Footer
  */
-.layout-footer {
-	position: relative;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin-bottom: 5px;
-	height: 20px;
-	border-top: 0px solid #eeeeee;
-}
 
-.footer-copy {
-	font-size: 92%;
-	display: block;
-	color: #777777;
-	text-align: center;
-}
+ div.formulario{
+ 	display: block;
+  	margin: 0 auto;
+ }

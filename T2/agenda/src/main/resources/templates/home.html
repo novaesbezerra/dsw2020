@@ -13,7 +13,7 @@
 		
 		<h1>
 			<span th:text="#{home.hello}"></span>
-			<span th:inline="text">[[${#httpServletRequest.remoteUser}]]!</span>
+			<span th:inline="text"></span><span sec:authentication="name"></span>
 		</h1>
 	</div>
 		<div class="container" style="text-align: center;">

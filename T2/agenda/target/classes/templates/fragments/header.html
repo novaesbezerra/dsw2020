@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"></head>
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+<link
+	th:href="@{/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css}"
+	rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
 <body>
 	<header th:fragment="cabecalho">
 		<nav
 			class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<div style="right: 10px; position: absolute">
-						<a th:href="@{''(lang=pt)}"><img alt=""
-							th:src="@{/image/Brasil.gif}" style="width: 30px;" /></a> 
-						<a th:href="@{''(lang=en)}"><img alt=""
-							th:src="@{/image/EUA.gif}" style="width: 30px;" /></a>
-					</div>
+					
 					<button type="button" class="btn btn-dark navbar-toggle pull-left">
 						<i class="oi oi-menu"></i>
 					</button>
 					<a class="navbar-brand " th:href="@{/}" th:text="#{title.label}">
 					</a>
+					
 				</div>
+				<div class="bandeiras">
+						<a class="icon-bandeiras" th:href="@{''(lang=pt)}"><img alt=""
+							th:src="@{/image/Brasil.gif}" style="width: 30px;" /></a> 
+						<a class="icon-bandeiras" th:href="@{''(lang=en)}"><img alt=""
+							th:src="@{/image/EUA.gif}" style="width: 30px;" /></a>
+					</div>
+				<ul class="nav navbar-nav navbar-right">
+						<li th:if="${#authorization.expression('!isAuthenticated()')}">
+							<a href="/signin" th:href="@{/login}"> 
+							<span class="oi oi-person" title="person" aria-hidden="true"></span>&nbsp;Login</a>
+						</li>
+						<li th:if="${#authorization.expression('isAuthenticated()')}">
+							<a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
+								<span class="oi oi-person" title="person" aria-hidden="true"></span>&nbsp;Logout
+						</a>
+							<form style="visibility: hidden" id="form" method="post"
+								action="#" th:action="@{/logout}"></form>
+						</li>
+					</ul>
 			</div>
 		</nav>
 	</header>

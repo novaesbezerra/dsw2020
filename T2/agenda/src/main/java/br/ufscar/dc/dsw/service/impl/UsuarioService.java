@@ -17,8 +17,8 @@ public class UsuarioService implements IUsuarioService {
 	@Autowired
 	UsuarioDAO dao;
 
-	public void salvar(Usuario livro) {
-		dao.save(livro);
+	public void salvar(Usuario usuario) {
+		dao.save(usuario);
 	}
 
 	public void excluir(Long id) {

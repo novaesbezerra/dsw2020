@@ -15,7 +15,7 @@ import br.ufscar.dc.dsw.security.UsuarioDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+	
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return new UsuarioDetailsServiceImpl();
@@ -44,9 +44,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers("/", "/index", "/error").permitAll()
+				.antMatchers("/medicos/consulta").permitAll()
+				.antMatchers("/medicos/especialidades").permitAll()
 				.antMatchers("/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
-				.antMatchers("/medico/**").hasRole("MEDICO")
-				.antMatchers("/paciente/**").hasRole("PACIENTE")
+				.antMatchers("/medicos/cadastrar").hasRole("ADMIN")
+				.antMatchers("/paciente/cadastrar").hasRole("ADMIN")
+				.antMatchers("/consultas/**").hasRole("PACIENTE")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

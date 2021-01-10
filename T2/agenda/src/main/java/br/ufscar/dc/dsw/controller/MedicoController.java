@@ -32,6 +32,19 @@ public class MedicoController {
 		model.addAttribute("medicos",service.buscarTodos());
 		return "medico/lista";
 	}
+	
+	@GetMapping("/consulta")
+	public String consultar(ModelMap model) {
+		model.addAttribute("medicos",service.buscarTodos());
+		return "medico/consulta";
+	}
+	
+	@GetMapping("/especialidades")
+	public String especialidades(ModelMap model) {
+		model.addAttribute("medicos",service.buscarTodos());
+		return "medico/especialidades";
+	}
+
 
 	@PostMapping("/salvar")
 	public String salvar(@Valid Medico medico, BindingResult result, RedirectAttributes attr) {

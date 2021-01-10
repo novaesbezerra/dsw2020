@@ -49,6 +49,10 @@ public class Usuario extends AbstractEntity<Long> {
 	public String getRole() {
 		return role;
 	}
+	
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public String getNome() {
 		return nome;
