@@ -11,11 +11,11 @@
 <body>
 	<header th:fragment="cabecalho">
 		<nav
-			class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
+			class="navbar navbar-dark bg-secondary text-white fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					
-					<button type="button" class="btn btn-dark navbar-toggle pull-left">
+					<button type="button" class="btn btn-dark navbar-toggle pull-left" style="background-color:006600">
 						<i class="oi oi-menu"></i>
 					</button>
 					<a class="navbar-brand " th:href="@{/}" th:text="#{title.label}">
@@ -31,13 +31,15 @@
 				<ul class="nav navbar-nav navbar-right">
 						<li th:if="${#authorization.expression('!isAuthenticated()')}">
 							<a href="/signin" th:href="@{/login}"> 
-							<span class="oi oi-person" title="person" aria-hidden="true"></span>&nbsp;Login</a>
+							<button type="button" class="btn btn-info">
+							<span class="oi oi-person" title="person" aria-hidden="true"></span>&nbsp;Login</button></a>
 						</li>
 						<li th:if="${#authorization.expression('isAuthenticated()')}">
 							<a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
-								<span class="oi oi-person" title="person" aria-hidden="true"></span>&nbsp;Logout
+							<button type="button" class="btn btn-danger">
+								<span class="oi oi-person" title="person" aria-hidden="true"></span>&nbsp;Logout</button>
 						</a>
-							<form style="visibility: hidden" id="form" method="post"
+							<form style="visibility: hidden;" id="form" method="post"
 								action="#" th:action="@{/logout}"></form>
 						</li>
 					</ul>

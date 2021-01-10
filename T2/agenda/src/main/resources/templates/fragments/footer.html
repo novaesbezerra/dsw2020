@@ -14,9 +14,6 @@
 						<form class="form-rodape" th:action="@{/logout}" method="post">
 										<b><span th:text="#{login.reco}"></span>:</b> <span sec:authentication="name"></span> | 
 										<b><span th:text="#{user.role}"></span>:</b> <span sec:authentication="principal.authorities"></span>
-										<input type="submit" name="login-submit" id="login-submit"
-											class="form-control btn btn-info" value="Logout" style="width: 15%; float: right; margin-right: 25%">
-											<p></p>
 						</form>
 					</div>
 			</div>

@@ -45,6 +45,12 @@ public class ConsultaController {
 		model.addAttribute("consultas",consultaService.buscarTodos());
 		return "consulta/lista";
 	}
+	
+	@GetMapping("/minhasconsultas")
+	public String listarMinhas(ModelMap model) {
+		model.addAttribute("minhas",consultaService.buscarTodos());
+		return "paciente/minhasconsultas";
+	}
 
 	@PostMapping("/salvar")
 	public String salvar(@Valid Consulta consulta, BindingResult result, RedirectAttributes attr) {

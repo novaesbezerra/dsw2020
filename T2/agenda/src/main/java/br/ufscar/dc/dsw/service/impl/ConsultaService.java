@@ -9,29 +9,37 @@ import org.springframework.transaction.annotation.Transactional;
 import br.ufscar.dc.dsw.dao.ConsultaDAO;
 import br.ufscar.dc.dsw.domain.Consulta;
 import br.ufscar.dc.dsw.service.spec.IConsultaService;
+import br.ufscar.dc.dsw.dao.PacienteDAO;
+import br.ufscar.dc.dsw.domain.Paciente;
+import br.ufscar.dc.dsw.service.spec.IPacienteService;
 
 @Service
 @Transactional(readOnly = false)
 public class ConsultaService implements IConsultaService {
 
 	@Autowired
-	ConsultaDAO dao;
+	ConsultaDAO daoConsulta;
 
 	public void salvar(Consulta consulta) {
-		dao.save(consulta);
+		daoConsulta.save(consulta);
 	}
 
 	public void excluir(Long id) {
-		dao.deleteById(id);
+		daoConsulta.deleteById(id);
 	}
 
 	@Transactional(readOnly = true)
 	public Consulta buscarPorId(Long id) {
-		return dao.findById(id.longValue());
+		return daoConsulta.findById(id.longValue());
 	}
+//	
+//	@Transactional(readOnly = true)
+//	public List<Consulta> buscarPorPaciente(Paciente paciente) {
+//		return daoPaciente.getConsultas();
+//	}
 
 	@Transactional(readOnly = true)
 	public List<Consulta> buscarTodos() {
-		return dao.findAll();
+		return daoConsulta.findAll();
 	}
 }
