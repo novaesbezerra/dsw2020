@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+	<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    </head>
+<body>
+	<th:block th:fragment="footer">
+		<footer class="layout-footer" th:fragment="rodape">
+		<hr/>
+			<div class="rodape">
+					<div class="formulario" sec:authorize="isAuthenticated()" style="text-align:center">
+						<form class="form-rodape" th:action="@{/logout}" method="post">
+										<b><span th:text="#{login.reco}"></span>:</b> <span sec:authentication="name"></span> | 
+										<b><span th:text="#{user.role}"></span>:</b> <span sec:authentication="principal.authorities"></span>
+						</form>
+					</div>
+			</div>
+		</footer>
+
+		<script type="text/javascript"
+			th:src="@{/webjars/jquery/jquery.min.js/}"></script>
+		<script type="text/javascript"
+			th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+	</th:block>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+<meta charset="UTF-8">
+</head>
+<body>
+	<nav class="sidebar sidebar-open" th:fragment="nav-sidebar">
+		<ul class="nav nav-pills">
+			<li class="nav-item"><a class="nav-link " th:href="@{/}"> <i
+					class="oi oi-home"></i> <span>Home</span>
+			</a></li>
+		</ul>
+		<div th:if="${#authorization.expression('isAuthenticated()')}">
+
+			<ul class="nav nav-pills">
+				<li class="nav-item"><span class="nav-link active"
+					th:text="#{sidebar.titulo.consultas}"></span></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/consultas/cadastrar}"> <i class="oi oi-plus"></i> <span
+						th:text="#{sidebar.link.cadastrar}"></span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/consultas/listar}"> <i class="oi oi-spreadsheet"></i>
+						<span th:text="#{sidebar.link.listar}"></span>
+				</a></li>
+			</ul>
+		</div>
+		<ul class="nav nav-pills">
+
+			<li class="nav-item"><span class="nav-link active"
+				th:text="#{sidebar.titulo.medicos}">Medicos</span></li>
+			<div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/medicos/cadastrar}"> <i class="oi oi-plus"></i> <span
+						th:text="#{sidebar.link.cadastrar}"></span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/medicos/listar}"> <i class="oi oi-spreadsheet"></i>
+						<span th:text="#{sidebar.link.listar}"></span>
+				</a></li>
+			</div>
+			<li class="nav-item"><a class="nav-link"
+				th:href="@{/medicos/consulta}"> <i class="oi oi-book"></i> <span
+					th:text="#{sidebar.link.consultar}"></span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link"
+				th:href="@{/medicos/especialidades}"> <i class="oi oi-heart"></i>
+					<span th:text="#{sidebar.link.especialidades}"></span>
+			</a></li>
+		</ul>
+
+		<div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+			<ul class="nav nav-pills">
+				<li class="nav-item"><span class="nav-link active"
+					th:text="#{sidebar.titulo.pacientes}">Pacientes</span></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/pacientes/cadastrar}"> <i class="oi oi-plus"></i> <span
+						th:text="#{sidebar.link.cadastrar}"></span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/pacientes/listar}"> <i class="oi oi-spreadsheet"></i>
+						<span th:text="#{sidebar.link.listar}"></span>
+				</a></li>
+			</ul>
+		</div>
+	</nav>
+</body>
+</html>
