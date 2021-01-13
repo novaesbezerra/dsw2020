@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufscar.dc.dsw.domain.Consulta;
@@ -35,13 +36,13 @@ public class ConsultaController {
 
 	@Autowired
 	private IConsultaService consultaService;
-	
+
 	@Autowired
 	private IMedicoService medicoService;
-	
+
 	@Autowired
 	private IPacienteService pacienteService;
-	
+
 
 	@GetMapping("/cadastrar")
 	public String cadastrar(ModelMap model, Consulta consulta) {
@@ -60,22 +61,11 @@ public class ConsultaController {
    	}
 
 	@GetMapping("/listar")
-	public String listar(ModelMap model, Locale locale) {
-                List<Consulta> consultas = service.buscarTodos(this.getUsuario());
-   		try {
-   			for (Consulta c : consultas) {
-   				Transacao t = clienteRestService.buscaTransacao(c.getTransacaoID());
-   				c.setDetalhes(toHTMLString(t, locale));
-   				c.setData(t.getData());
-   			}
-   		} catch (RestClientException e) {
-   			model.addAttribute("fail", "Falha na conexão");
-   		}
-   
-   		model.addAttribute("consultas", consultas);
+	public String listar(ModelMap model) {
+		model.addAttribute("consultas",consultaService.buscarTodos());
 		return "consulta/lista";
 	}
-	
+
 	@GetMapping("/minhasconsultas")
 	public String listarMinhas(ModelMap model) {
 		model.addAttribute("minhas",consultaService.buscarTodos());
@@ -117,12 +107,12 @@ public class ConsultaController {
 		model.addAttribute("sucess", "Consulta excluída com sucesso.");
 		return listar(model);
 	}
-	
+
 	@ModelAttribute("medicos")
 	public List<Medico> listaMedicos(){
 		return medicoService.buscarTodos();
 	}
-	
+
 	@ModelAttribute("pacientes")
 	public List<Paciente> listaPacientes(){
 		return pacienteService.buscarTodos();

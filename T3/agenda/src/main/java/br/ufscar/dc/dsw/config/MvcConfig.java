@@ -47,7 +47,7 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
-    
+
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(new BigDecimalConversor());
