@@ -1,44 +1,81 @@
 package br.ufscar.dc.dsw.service.impl;
 
-import java.util.List;
-
+import br.ufscar.dc.dsw.dao.UsuarioDAO;
+import br.ufscar.dc.dsw.dao.PacienteDAO;
+import br.ufscar.dc.dsw.domain.Usuario;
+import br.ufscar.dc.dsw.domain.Paciente;
+import br.ufscar.dc.dsw.domain.dto.CreatePacienteDTO;
+import br.ufscar.dc.dsw.domain.dto.EditPacienteDTO;
+import br.ufscar.dc.dsw.exception.EmailRepetido;
+import br.ufscar.dc.dsw.service.spec.IPacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.ufscar.dc.dsw.dao.PacienteDAO;
-import br.ufscar.dc.dsw.dao.UsuarioDAO;
-import br.ufscar.dc.dsw.dao.MedicoDAO;
-import br.ufscar.dc.dsw.domain.Paciente;
-import br.ufscar.dc.dsw.domain.Usuario;
-import br.ufscar.dc.dsw.domain.Medico;
-
-import br.ufscar.dc.dsw.service.spec.IUsuarioService;
-import br.ufscar.dc.dsw.service.spec.IMedicoService;
-import br.ufscar.dc.dsw.service.spec.IPacienteService;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-@Transactional(readOnly = false)
 public class PacienteService implements IPacienteService {
 
-	@Autowired
-	PacienteDAO dao;
+    private final PacienteDAO pacienteDAO;
 
-	public void salvar(Paciente paciente) {
-		dao.save(paciente);
-	}
+    private final UsuarioDAO usuarioDAO;
 
-	public void excluir(String cpf) {
-		dao.deleteByCpf(cpf);
-	}
+    private final BCryptPasswordEncoder passwordEncoder;
 
-	@Transactional(readOnly = true)
-	public Paciente buscarPorCpf(String cpf) {
-		return dao.findByCpf(cpf);
-	}
+    @Autowired
+    public PacienteService(PacienteDAO pacienteDAO, UsuarioDAO usuarioDAO, BCryptPasswordEncoder passwordEncoder) {
+        this.pacienteDAO = pacienteDAO;
+        this.passwordEncoder = passwordEncoder;
+        this.usuarioDAO = usuarioDAO;
+    }
 
-	@Transactional(readOnly = true)
-	public List<Paciente> buscarTodos() {
-		return dao.findAll();
-	}
+    @Override
+    public Paciente salvar(Paciente paciente) {
+        return pacienteDAO.save(paciente);
+    }
+
+    // @Override
+    // public Paciente update(EditPacienteDTO dto) {
+    //     Optional<Paciente> paciente = pacienteDAO.findById(Long.parseLong(dto.getId()));
+    //     if (!paciente.isPresent()) {
+    //         return null;
+    //     }
+    //     Paciente p = paciente.get();
+    //     p.setNome(dto.getNome());
+    //     p.setCpf(dto.getCpf());
+    //     p.setTelefone(dto.getTelefone());
+    //     return pacienteDAO.save(p);
+    // }
+
+    // @Override
+    // public Paciente create(CreatePacienteDTO dto) throws EmailRepetido {
+    //     Usuario user = usuarioDAO.getUserByEmail(dto.getEmail());
+    //     if (user != null) {
+    //         throw new EmailRepetido();
+    //     }
+
+    //     String hashedPassword = passwordEncoder.encode(dto.getSenha());
+    //     Paciente p = new Paciente(dto.getEmail(), hashedPassword, dto.getNome(), dto.getCpf(), dto.getTelefone());
+    //     return pacienteDAO.save(p);
+    // }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Paciente> buscarTodos() {
+        return pacienteDAO.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Paciente> buscarPorIdPaciente(Long id) {
+        return pacienteDAO.findById(id);
+    }
+
+    @Override
+    public void excluir(Long id) {
+        pacienteDAO.deleteById(id);
+    }
 }
