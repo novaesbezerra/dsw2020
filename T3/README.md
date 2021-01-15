@@ -46,36 +46,36 @@ Lucas (50%), Jéssica (50%)
 
 ### REST API -- CRUD de pacientes
 
-> POST http://localhost:8080/pacientes
+> POST http://localhost:8081/pacientes
 
-> GET http://localhost:8080/pacientes
+> GET http://localhost:8081/pacientes
 
-> GET http://localhost:8080/pacientes/{id}
+> GET http://localhost:8081/pacientes/{id}
 
-> PUT http://localhost:8080/pacientes/{id}
+> PUT http://localhost:8081/pacientes/{id}
 
-> DELETE http://localhost:8080/pacientes/{id}
+> DELETE http://localhost:8081/pacientes/{id}
 
 ### REST API -- CRUD de médicos
 
-> POST http://localhost:8080/medicos
+> POST http://localhost:8081/medicos
 
-> GET http://localhost:8080/medicos
+> GET http://localhost:8081/medicos
 
-> GET http://localhost:8080/medicos/{id}
+> GET http://localhost:8081/medicos/{id}
 
-> GET http://localhost:8080/medicos/especialidades/{nome}
+> GET http://localhost:8081/medicos/especialidades/{nome}
 
-> PUT http://localhost:8080/medicos/{id}
+> PUT http://localhost:8081/medicos/{id}
 
-> DELETE http://localhost:8080/medicos/{id}
+> DELETE http://localhost:8081/medicos/{id}
 
 ### REST API -- CRUD de consultas
 
-> GET http://localhost:8080/consultas
+> GET http://localhost:8081/consultas
 
-> GET http://localhost:8080/consultas/{id}
+> GET http://localhost:8081/consultas/{id}
 
-> GET http://localhost:8080/consultas/pacientes/{id}
+> GET http://localhost:8081/consultas/pacientes/{id}
 
-> GET http://localhost:8080/consultas/medicos/{id}
+> GET http://localhost:8081/consultas/medicos/{id}
