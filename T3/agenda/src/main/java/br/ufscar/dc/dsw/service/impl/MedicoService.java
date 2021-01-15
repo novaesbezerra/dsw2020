@@ -36,7 +36,7 @@ public class MedicoService implements IMedicoService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Medico> buscarPorIdMedico(Long id) {
+    public Optional <Medico> buscarPorIdMedico(Long id) {
         return dao.findById(id);
     }
     

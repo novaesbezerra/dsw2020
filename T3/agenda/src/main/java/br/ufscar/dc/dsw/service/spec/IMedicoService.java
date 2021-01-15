@@ -8,7 +8,7 @@ import br.ufscar.dc.dsw.domain.Paciente;
 
 public interface IMedicoService {
 
-	Optional<Medico> buscarPorIdMedico(Long id);
+	Optional <Medico> buscarPorIdMedico(Long id);
 
 	Medico buscarPorCrm(String crm);
 

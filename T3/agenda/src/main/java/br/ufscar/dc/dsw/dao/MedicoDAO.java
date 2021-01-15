@@ -14,7 +14,7 @@ public interface MedicoDAO extends CrudRepository<Medico, Long> {
     List<Medico> findAll();
     
     @Override
-    Optional<Medico> findById(Long id);
+    Optional <Medico> findById(Long id);
 
     Medico findByCrm(String crm);
 

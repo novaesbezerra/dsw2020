@@ -78,7 +78,7 @@ public class MedicoController {
 		@DeleteMapping(path = "/medicos/{id}")
 		public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 
-			Optional<Medico> medico = service.buscarPorIdMedico(id);
+			Optional <Medico> medico = service.buscarPorIdMedico(id);
 			if (medico == null) {
 				return ResponseEntity.notFound().build();
 			} else {
@@ -105,6 +105,17 @@ public class MedicoController {
 				return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
 			}
 		}
+		
+		  // GET http://localhost:8081/medicos/{id}
+		 @GetMapping(path = "/medicos/{id}")
+		 public ResponseEntity<Medico> lista(@PathVariable("id") long id) {
+		 	Optional <Medico> medico = service.buscarPorIdMedico(id);
+		 	if (medico == null) {
+		 		return ResponseEntity.notFound().build();
+		 	}
+		 	return ResponseEntity.ok(medico.get());
+		 }
+		
 		
 	@GetMapping("/cadastrar")
 	public String cadastrar(Medico medico) {
