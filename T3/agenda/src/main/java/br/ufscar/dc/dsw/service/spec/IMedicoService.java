@@ -1,12 +1,14 @@
 package br.ufscar.dc.dsw.service.spec;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.ufscar.dc.dsw.domain.Medico;
+import br.ufscar.dc.dsw.domain.Paciente;
 
 public interface IMedicoService {
 
-	//Medico buscarPorId(Long id);
+	Optional<Medico> buscarPorIdMedico(Long id);
 
 	Medico buscarPorCrm(String crm);
 
@@ -15,4 +17,7 @@ public interface IMedicoService {
 	void salvar(Medico medico);
 
 	void excluir(String crm);
+	
+	void excluir(Long id);
+
 }
