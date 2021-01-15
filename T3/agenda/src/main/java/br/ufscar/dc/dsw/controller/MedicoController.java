@@ -88,6 +88,16 @@ public class MedicoController {
 		return ResponseEntity.ok(medico.get());
 	}
 
+	// GET http://localhost:8081/medicos/especialidades/{nome}
+	@GetMapping(path = "/medicos/especialidades/{nome}")
+	public ResponseEntity<Medico> lista(@PathVariable("nome") String nome) {
+		Optional <Medico> medico = service.buscarPorEspecialidade(nome);
+		if (medico == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(medico.get());
+	}
+
 	// DELETE http://localhost:8081/medicos/{id}
 	@DeleteMapping(path = "/medicos/{id}")
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {

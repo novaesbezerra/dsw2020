@@ -12,6 +12,8 @@ public interface IMedicoService {
 
 	Medico buscarPorCrm(String crm);
 
+	Optional <Medico> buscarPorEspecialidade(String especialidade);
+
 	List<Medico> buscarTodos();
 
 	void salvar(Medico medico);

@@ -98,6 +98,28 @@ public class ConsultaController {
 	 	return ResponseEntity.ok(consulta);
 	 }
 
+	// GET http://localhost:8081/consultas/medicos/{id}
+	@GetMapping(path = "/consultas/medicos/{id}")
+	public ResponseEntity<List<Consulta>> lista_por_medico(@PathVariable("id") Long id) {
+		Optional <Medico> medico = medicoService.buscarPorIdMedico(id);
+		List<Consulta> lista = consultaService.buscarPorMedico(medico.get());
+		if (lista.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(lista);
+	}
+
+	// GET http://localhost:8081/consultas/pacientes/{id}
+	@GetMapping(path = "/consultas/pacientes/{id}")
+	public ResponseEntity<List<Consulta>> lista_por_paciente(@PathVariable("id") Long id) {
+		Optional <Paciente> paciente = pacienteService.buscarPorIdPaciente(id);
+		List<Consulta> lista = consultaService.buscarPorPaciente(paciente.get());
+		if (lista.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(lista);
+	}
+
 	// DELETE http://localhost:8081/consultas/{id}
 	@DeleteMapping(path = "/consultas/{id}")
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {

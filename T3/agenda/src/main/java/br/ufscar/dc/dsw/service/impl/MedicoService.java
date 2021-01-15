@@ -46,6 +46,11 @@ public class MedicoService implements IMedicoService {
 	}
 
 	@Transactional(readOnly = true)
+	public Optional <Medico> buscarPorEspecialidade(String especialidade) {
+		return dao.findByEspecialidade(especialidade);
+	}
+
+	@Transactional(readOnly = true)
 	public List<Medico> buscarTodos() {
 		return dao.findAll();
 	}

@@ -23,8 +23,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
 		.antMatchers("/consultas", "/medicos", "/pacientes").permitAll() // REST Controllers (GET - get All, POST - Create)
 		.antMatchers("/consultas/{\\d+}", "/medicos/{\\d+}", "/pacientes/{\\d+}").permitAll() // REST Controllers (GET by id, PUT - Update by id, DELETE by ID)
-		.antMatchers("/medicos/consulta/{\\w+}").permitAll() // REST Controllers (GET by titulo)
-		.antMatchers("/medicos/especialidades/{\\d+}").permitAll() // REST Controllers (GET by UsuarioID)
+		.antMatchers("/medicos/consulta/{\\w+}").permitAll()
+		.antMatchers("/medicos/especialidades/{\\d+}").permitAll() // REST Controllers (GET by especialidade)
+		.antMatchers("/consultas/medicos/{\\d+}").permitAll()
+		.antMatchers("/consultas/pacientes/{\\d+}").permitAll()
 		.anyRequest().authenticated();
 	}
 
