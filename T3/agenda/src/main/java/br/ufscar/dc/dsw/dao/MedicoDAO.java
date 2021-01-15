@@ -12,14 +12,14 @@ public interface MedicoDAO extends CrudRepository<Medico, Long> {
     Medico save(Medico medico);
 
     List<Medico> findAll();
-    
+
     @Override
     Optional <Medico> findById(Long id);
 
     Medico findByCrm(String crm);
 
     void deleteByCrm(String crm);
-    
+
     void deleteById(Long id);
 
 }

@@ -12,8 +12,7 @@ public interface PacienteDAO extends CrudRepository<Paciente, Long> {
     Paciente save(Paciente paciente);
 
     List<Paciente> findAll();
-    
-//    List<Consultas> getConsultas();
+
     @Override
     Optional<Paciente> findById(Long id);
 

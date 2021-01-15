@@ -40,7 +40,7 @@ public class MedicoController {
 
 	@Autowired
 	private IUsuarioService userService;
-	
+
 	private boolean isJSONValid(String jsonInString) {
 		try {
 			return new ObjectMapper().readTree(jsonInString) != null;
@@ -48,7 +48,7 @@ public class MedicoController {
 			return false;
 		}
 	}
-	
+
 	private void parse(Medico medico, JSONObject json) {
 
 		Object id = json.get("id");
@@ -63,117 +63,56 @@ public class MedicoController {
 		medico.setNome((String) json.get("nome"));
 		medico.setCrm((String) json.get("crm"));
 	}
-	
+
 	// GET http://localhost:8081/medicos/
-		@GetMapping(path = "/medicos")
-		public ResponseEntity<List<Medico>> lista() {
-			List<Medico> lista = service.buscarTodos();
-			if (lista.isEmpty()) {
-				return ResponseEntity.notFound().build();
-			}
-			return ResponseEntity.ok(lista);
+	@GetMapping(path = "/medicos")
+	public ResponseEntity<List<Medico>> lista() {
+		List<Medico> lista = service.buscarTodos();
+		if (lista.isEmpty()) {
+			return ResponseEntity.notFound().build();
 		}
-		
-		// DELETE http://localhost:8080/pacientes/{id}
-		@DeleteMapping(path = "/medicos/{id}")
-		public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
+		return ResponseEntity.ok(lista);
+	}
 
-			Optional <Medico> medico = service.buscarPorIdMedico(id);
-			if (medico == null) {
-				return ResponseEntity.notFound().build();
+	// GET http://localhost:8081/medicos/{id}
+	@GetMapping(path = "/medicos/{id}")
+	public ResponseEntity<Medico> lista(@PathVariable("id") long id) {
+		Optional <Medico> medico = service.buscarPorIdMedico(id);
+		if (medico == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(medico.get());
+	}
+
+	// DELETE http://localhost:8080/medicos/{id}
+	@DeleteMapping(path = "/medicos/{id}")
+	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
+
+		Optional <Medico> medico = service.buscarPorIdMedico(id);
+		if (medico == null) {
+			return ResponseEntity.notFound().build();
+		} else {
+			service.excluir(id);
+			return ResponseEntity.noContent().build();
+		}
+	}
+
+	// POST http://localhost:8081/medicos
+	@PostMapping(path = "/medicos")
+	@ResponseBody
+	public ResponseEntity<Medico> cria(@RequestBody JSONObject json) {
+		try {
+			if (isJSONValid(json.toString())) {
+				Medico medico = new Medico();
+				parse(medico, json);
+				service.salvar(medico);
+				return ResponseEntity.ok(medico);
 			} else {
-				service.excluir(id);
-				return ResponseEntity.noContent().build();
+				return ResponseEntity.badRequest().body(null);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
 		}
-		
-		// POST http://localhost:8081/pacientes
-		@PostMapping(path = "/medicos")
-		@ResponseBody
-		public ResponseEntity<Medico> cria(@RequestBody JSONObject json) {
-			try {
-				if (isJSONValid(json.toString())) {
-					Medico medico = new Medico();
-					parse(medico, json);
-					service.salvar(medico);
-					return ResponseEntity.ok(medico);
-				} else {
-					return ResponseEntity.badRequest().body(null);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
-			}
-		}
-		
-		  // GET http://localhost:8081/medicos/{id}
-		 @GetMapping(path = "/medicos/{id}")
-		 public ResponseEntity<Medico> lista(@PathVariable("id") long id) {
-		 	Optional <Medico> medico = service.buscarPorIdMedico(id);
-		 	if (medico == null) {
-		 		return ResponseEntity.notFound().build();
-		 	}
-		 	return ResponseEntity.ok(medico.get());
-		 }
-		
-		
-	@GetMapping("/cadastrar")
-	public String cadastrar(Medico medico) {
-		return "medico/cadastro";
-	}
-
-	@GetMapping("/listar")
-	public String listar(ModelMap model) {
-		model.addAttribute("medicos",service.buscarTodos());
-		return "medico/lista";
-	}
-	
-	@GetMapping("/consulta")
-	public String consultar(ModelMap model) {
-		model.addAttribute("medicos",service.buscarTodos());
-		return "medico/consulta";
-	}
-	
-	@GetMapping("/especialidades")
-	public String especialidades(ModelMap model) {
-		model.addAttribute("medicos",service.buscarTodos());
-		return "medico/especialidades";
-	}
-
-
-	@PostMapping("/salvar")
-	public String salvar(@Valid Medico medico, BindingResult result, RedirectAttributes attr) {
-		if (result.hasErrors()) {
-			return "medico/cadastro";
-		}
-
-		service.salvar(medico);
-		attr.addFlashAttribute("sucess", "Medico(a) inserido(a) com sucesso.");
-		return "redirect:/medicos/listar";
-	}
-
-	@GetMapping("/editar/{crm}")
-	public String preEditar(@PathVariable("crm") String crm, ModelMap model) {
-		model.addAttribute("medico", service.buscarPorCrm(crm));
-		return "medico/cadastro";
-	}
-
-	@PostMapping("/editar")
-	public String editar(@Valid Medico medico, BindingResult result, RedirectAttributes attr) {
-
-		if (result.hasErrors()) {
-			return "medico/cadastro";
-		}
-
-		service.salvar(medico);
-		attr.addFlashAttribute("sucess", "Medico(a) editado(a) com sucesso.");
-		return "redirect:/medicos/listar";
-	}
-
-	@GetMapping("/excluir/{crm}")
-	public String excluir(@PathVariable("crm") String crm, ModelMap model) {
-		service.excluir(crm);
-		model.addAttribute("sucess", "Medico(a) excluído(a) com sucesso.");
-		return listar(model);
 	}
 }

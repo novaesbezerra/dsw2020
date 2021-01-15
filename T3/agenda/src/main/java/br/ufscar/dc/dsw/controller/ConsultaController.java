@@ -2,23 +2,34 @@ package br.ufscar.dc.dsw.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Optional;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.validation.Valid;
 import java.util.List;
+import java.io.IOException;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestClientException;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.ufscar.dc.dsw.domain.Consulta;
 import br.ufscar.dc.dsw.service.spec.IConsultaService;
@@ -31,7 +42,7 @@ import br.ufscar.dc.dsw.service.spec.IPacienteService;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
-@RequestMapping("/consultas")
+@RestController()
 public class ConsultaController {
 
 	@Autowired
@@ -43,78 +54,78 @@ public class ConsultaController {
 	@Autowired
 	private IPacienteService pacienteService;
 
-
-	@GetMapping("/cadastrar")
-	public String cadastrar(ModelMap model, Consulta consulta) {
-            try {
-   			model.addAttribute("medicos", listaMedicos());
-   			model.addAttribute("pacientes", listaPacientes());
-   		} catch (RestClientException e) {
-   			model.addAttribute("fail", "Falha na conexão");
-   		}
-		return "consulta/cadastro";
-	}
-        private Usuario getUsuario() {
-   		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication()
-   				.getPrincipal();
-   		return usuarioDetails.getUsuario();
-   	}
-
-	@GetMapping("/listar")
-	public String listar(ModelMap model) {
-		model.addAttribute("consultas",consultaService.buscarTodos());
-		return "consulta/lista";
+	private boolean isJSONValid(String jsonInString) {
+		try {
+			return new ObjectMapper().readTree(jsonInString) != null;
+		} catch (IOException e) {
+			return false;
+		}
 	}
 
-	@GetMapping("/minhasconsultas")
-	public String listarMinhas(ModelMap model) {
-		model.addAttribute("minhas",consultaService.buscarTodos());
-		return "paciente/minhasconsultas";
-	}
+	private void parse(Consulta consulta, JSONObject json) {
 
-	@PostMapping("/salvar")
-	public String salvar(@Valid Consulta consulta, BindingResult result, RedirectAttributes attr) {
-		if (result.hasErrors()) {
-			return "consulta/cadastro";
+		Object id = json.get("id");
+		if (id != null) {
+			if (id instanceof Integer) {
+				consulta.setId(((Integer) id).longValue());
+			} else {
+				consulta.setId((Long) id);
+			}
 		}
 
-		consultaService.salvar(consulta);
-		attr.addFlashAttribute("sucess", "Consulta inserida com sucesso.");
-		return "redirect:/consultas/listar";
+		consulta.setHora((String) json.get("hora"));
+		consulta.setData((String) json.get("data"));
 	}
 
-	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		model.addAttribute("consulta", consultaService.buscarPorId(id));
-		return "consulta/cadastro";
-	}
-
-	@PostMapping("/editar")
-	public String editar(@Valid Consulta consulta, BindingResult result, RedirectAttributes attr) {
-
-		if (result.hasErrors()) {
-			return "consulta/cadastro";
+	// GET http://localhost:8081/consultas/
+	@GetMapping(path = "/consultas")
+	public ResponseEntity<List<Consulta>> lista() {
+		List<Consulta> lista = consultaService.buscarTodos();
+		if (lista.isEmpty()) {
+			return ResponseEntity.notFound().build();
 		}
-
-		consultaService.salvar(consulta);
-		attr.addFlashAttribute("sucess", "Consulta editada com sucesso.");
-		return "redirect:/consultas/listar";
+		return ResponseEntity.ok(lista);
 	}
 
-	@GetMapping("/excluir/{id}")
-	public String excluir(@PathVariable("id") Long id, ModelMap model) {
-		consultaService.excluir(id);
-		model.addAttribute("sucess", "Consulta excluída com sucesso.");
-		return listar(model);
+	  // GET http://localhost:8081/consultas/{id}
+	 @GetMapping(path = "/consultas/{id}")
+	 public ResponseEntity<Consulta> lista(@PathVariable("id") long id) {
+	 	Consulta consulta = consultaService.buscarPorId(id);
+	 	if (consulta == null) {
+	 		return ResponseEntity.notFound().build();
+	 	}
+	 	return ResponseEntity.ok(consulta);
+	 }
+
+	// DELETE http://localhost:8080/consultas/{id}
+	@DeleteMapping(path = "/consultas/{id}")
+	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
+
+		Consulta consulta = consultaService.buscarPorId(id);
+		if (consulta == null) {
+			return ResponseEntity.notFound().build();
+		} else {
+			consultaService.excluir(id);
+			return ResponseEntity.noContent().build();
+		}
 	}
 
-	@ModelAttribute("medicos")
-	public List<Medico> listaMedicos(){
-		return medicoService.buscarTodos();
-	}
-
-	@ModelAttribute("pacientes")
-	public List<Paciente> listaPacientes(){
-		return pacienteService.buscarTodos();
+	// POST http://localhost:8081/consultas
+	@PostMapping(path = "/consultas")
+	@ResponseBody
+	public ResponseEntity<Consulta> cria(@RequestBody JSONObject json) {
+		try {
+			if (isJSONValid(json.toString())) {
+				Consulta consulta = new Consulta();
+				parse(consulta, json);
+				consultaService.salvar(consulta);
+				return ResponseEntity.ok(consulta);
+			} else {
+				return ResponseEntity.badRequest().body(null);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
+		}
 	}
 }
