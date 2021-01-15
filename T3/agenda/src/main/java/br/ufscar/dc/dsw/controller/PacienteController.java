@@ -74,7 +74,7 @@ public class PacienteController {
 		paciente.setEmail((String) json.get("email"));
 	}
 
-	// GET http://localhost:8080/pacientes/
+	// GET http://localhost:8081/pacientes/
 	@GetMapping(path = "/pacientes")
 	public ResponseEntity<List<Paciente>> lista() {
 		List<Paciente> lista = service.buscarTodos();
@@ -94,7 +94,7 @@ public class PacienteController {
 	 	return ResponseEntity.ok(paciente.get());
 	 }
 
-	// POST http://localhost:8080/pacientes
+	// POST http://localhost:8081/pacientes
 	@PostMapping(path = "/pacientes")
 	@ResponseBody
 	public ResponseEntity<Paciente> cria(@RequestBody JSONObject json) {
@@ -113,7 +113,7 @@ public class PacienteController {
 		}
 	}
 
-	//PUT http://localhost:8080/pacientes/{id}
+	//PUT http://localhost:8081/pacientes/{id}
 	@PutMapping(path = "/pacientes/{id}")
 	public ResponseEntity<Paciente> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
 		try {
@@ -134,7 +134,7 @@ public class PacienteController {
 		}
 	}
 
-	// DELETE http://localhost:8080/pacientes/{id}
+	// DELETE http://localhost:8081/pacientes/{id}
 	@DeleteMapping(path = "/pacientes/{id}")
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 

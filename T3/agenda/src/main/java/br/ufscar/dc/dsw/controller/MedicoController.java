@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -62,6 +63,9 @@ public class MedicoController {
 
 		medico.setNome((String) json.get("nome"));
 		medico.setCrm((String) json.get("crm"));
+		medico.setSenha((String) json.get("senha"));
+		medico.setEspecialidade((String) json.get("especialidade"));
+		medico.setEmail((String) json.get("email"));
 	}
 
 	// GET http://localhost:8081/medicos/
@@ -84,7 +88,7 @@ public class MedicoController {
 		return ResponseEntity.ok(medico.get());
 	}
 
-	// DELETE http://localhost:8080/medicos/{id}
+	// DELETE http://localhost:8081/medicos/{id}
 	@DeleteMapping(path = "/medicos/{id}")
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 
@@ -112,6 +116,27 @@ public class MedicoController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
+		}
+	}
+
+	//PUT http://localhost:8081/medicos/{id}
+	@PutMapping(path = "/medicos/{id}")
+	public ResponseEntity<Medico> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
+		try {
+			if (isJSONValid(json.toString())) {
+				Optional<Medico> medico = service.buscarPorIdMedico(id);
+				if (medico == null) {
+					return ResponseEntity.notFound().build();
+				} else {
+					parse(medico.get(), json);
+					service.salvar(medico.get());
+					return ResponseEntity.ok(medico.get());
+				}
+			} else {
+				return ResponseEntity.badRequest().body(null);
+			}
+		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
 		}
 	}
