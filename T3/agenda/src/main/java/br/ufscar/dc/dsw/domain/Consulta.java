@@ -49,16 +49,16 @@ public class Consulta extends AbstractEntity<Long> {
 		this.data = data;
 	}
 
-	public Medico getMedico() {
-		return medico;
+	public String getMedico() {
+		return medico.getNome();
 	}
 
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
+	public String getPaciente() {
+		return paciente.getNome();
 	}
 
 	public void setPaciente(Paciente paciente) {

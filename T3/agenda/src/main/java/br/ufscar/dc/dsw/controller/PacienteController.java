@@ -66,6 +66,11 @@ public class PacienteController {
 
 		paciente.setNome((String) json.get("nome"));
 		paciente.setCpf((String) json.get("cpf"));
+		paciente.setSenha((String) json.get("senha"));
+		paciente.setTelefone((String) json.get("telefone"));
+		paciente.setSexo((String) json.get("sexo"));
+		paciente.setNascimento((String) json.get("nascimento"));
+		paciente.setEmail((String) json.get("email"));
 	}
 
 	// GET http://localhost:8080/pacientes/
